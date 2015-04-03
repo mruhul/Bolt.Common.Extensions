@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bolt.Common.Extensions", "Bolt.Common.Extensions\Bolt.Common.Extensions.csproj", "{7BA0F585-7245-4CD4-916B-7BCAB3D27D07}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2E17C6E1-C85D-43EB-B368-A60A98D0D41F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bolt.Common.Extensions.UnitTests", "Bolt.Common.Extensions.UnitTests\Bolt.Common.Extensions.UnitTests.csproj", "{148A01F5-8A3A-49D6-BB59-8FE5F87A0FD4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BA0F585-7245-4CD4-916B-7BCAB3D27D07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BA0F585-7245-4CD4-916B-7BCAB3D27D07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BA0F585-7245-4CD4-916B-7BCAB3D27D07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BA0F585-7245-4CD4-916B-7BCAB3D27D07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{148A01F5-8A3A-49D6-BB59-8FE5F87A0FD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{148A01F5-8A3A-49D6-BB59-8FE5F87A0FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{148A01F5-8A3A-49D6-BB59-8FE5F87A0FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{148A01F5-8A3A-49D6-BB59-8FE5F87A0FD4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{148A01F5-8A3A-49D6-BB59-8FE5F87A0FD4} = {2E17C6E1-C85D-43EB-B368-A60A98D0D41F}
+	EndGlobalSection
+EndGlobal

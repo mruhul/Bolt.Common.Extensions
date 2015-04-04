@@ -39,6 +39,7 @@ A library containing common extensions methods. Here are the list
  grretings.IsSame(name).ShouldBe(false);
  ```
 * **Join(IEnumerable<string>, string)** - Join a collection of string with seperator 
+ 
  ``` c-sharp
  var colors = new []{ "Red", "Green", "Blue" };
  colors.Join(",").ShouldBe("Red,Green,Blue");

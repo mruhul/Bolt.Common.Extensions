@@ -61,5 +61,11 @@ namespace Bolt.Common.Extensions
         {
             return SlugCreator.Create(source, max, toLower: !keepCaseAsIs);
         }
+
+        [DebuggerStepThrough]
+        public static string FormatWith(this string source, params object[] args)
+        {
+            return string.Format(source, args);
+        }
     }
 }

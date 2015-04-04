@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Bolt.Common.Extensions")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Common used extension methods")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Mohammad Ruhul Amin")]
 [assembly: AssemblyProduct("Bolt.Common.Extensions")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]

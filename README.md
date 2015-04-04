@@ -52,4 +52,9 @@ A library containing common extensions methods. Here are the list
  greetingsTemplate.FormatWith("World").ShouldBe("Hello World");
  ```
 
+* **ToSlug(int,bool)** - Generate url friendly version of a string
+
+``` c-sharp
+"Hello World--345".ToSlug().ShouldBe("hello-world");
+```
 

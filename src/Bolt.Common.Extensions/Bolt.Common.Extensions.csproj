@@ -40,7 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoolExtensions.cs" />
+    <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="EnumExtensions.cs" />
+    <Compile Include="GuidExtensions.cs" />
     <Compile Include="NullHelperExtensions.cs" />
     <Compile Include="NumericExtensions.cs" />
     <Compile Include="StringExtensions.cs" />

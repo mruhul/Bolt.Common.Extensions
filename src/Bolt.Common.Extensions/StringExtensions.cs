@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Bolt.Common.Extensions
 {
@@ -55,6 +56,7 @@ namespace Bolt.Common.Extensions
                     : value;
         }
 
+        [DebuggerStepThrough]
         public static string ToSlug(this string source, int max = 80, bool keepCaseAsIs = false)
         {
             return SlugCreator.Create(source, max, toLower: !keepCaseAsIs);

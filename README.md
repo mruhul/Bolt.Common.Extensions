@@ -81,7 +81,7 @@ A library containing common extensions methods. Here are the list (Documentation
 
 ## Numeric
 
-* **ToInt** - Convert a string to int
+* **ToInt()** - Convert a string to int?
 
   ``` c-sharp
   "123".ToInt().ShouldBe(123);

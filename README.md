@@ -85,10 +85,18 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
 
 ## Numeric
 
-* **ToInt()** - Convert a string to int?
+* **ToInt()** - Convert a string to nullable int?
 
   ``` c-sharp
   "123".ToInt().ShouldBe(123);
   "Hello".ToInt().ShouldBe(null);
   "Hello".ToInt().NullSafe().ShouldBe(0);
   ```
+  
+* **ToDecimal()** - Convert a string to nullable decimal?
+
+  ``` c-sharp
+  "123.56".ToDecimal().ShouldBe(123.56);
+  "Hello".ToDecimal().ShouldBe(null);
+  "Hello".ToDecimal().NullSafe().ShouldBe(0);
+  ```  

@@ -33,6 +33,7 @@ namespace Bolt.Common.Extensions.UnitTests
     public enum Color
     {
         None = 0,
+        [System.ComponentModel.Description("Red Color")]
         Red = 1,
         Green = 2,
         Blue = 3

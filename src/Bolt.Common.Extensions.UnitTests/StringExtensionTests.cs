@@ -25,5 +25,20 @@ namespace Bolt.Common.Extensions.UnitTests
 
             data.NullSafe().Join(",").ShouldBe("Kingsville,3012");
         }
+
+        [Test]
+        public void DescriptionTests()
+        {
+            Color.Red.Description().ShouldBe("Red Color");
+            Color.Green.Description().ShouldBe("Green");
+        }
+
+        [TestCase("Hello World ", "hello-world")]
+        [TestCase("Hello World--", "hello-world")]
+        [TestCase("Hello--World", "hello-world")]
+        public void ToSlugTests(string input, string expected)
+        {
+            input.ToSlug().ShouldBe(expected);
+        }
     }
 }

@@ -58,8 +58,9 @@ A library containing common extensions methods. Here are the list (Documentation
  ``` c-sharp
  "Hello World--345".ToSlug().ShouldBe("hello-world");
  ```
- 
- Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in-dotnet-aka-unicode-to-ascii-aka-diacritic-stripping/
+Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in-dotnet-aka-unicode-to-ascii-aka-diacritic-stripping/
+
+## Enum
 
 * **Description()** - Return the description attribute value of an enum
 

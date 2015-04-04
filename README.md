@@ -39,12 +39,6 @@ A library containing common extensions methods. Here are the list (Documentation
  greetings.IsSame(greetingsLowerCase).ShouldBe(true);
  grretings.IsSame(name).ShouldBe(false);
  ```
-* **Join(IEnumerable<string>, string)** - Join a collection of string with seperator 
- 
- ``` c-sharp
- var colors = new []{ "Red", "Green", "Blue" };
- colors.Join(",").ShouldBe("Red,Green,Blue");
- ```
 
 * **FormatWith(params object[])** - Format string with arguments
  
@@ -59,6 +53,15 @@ A library containing common extensions methods. Here are the list (Documentation
  "Hello World--345".ToSlug().ShouldBe("hello-world");
  ```
 Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in-dotnet-aka-unicode-to-ascii-aka-diacritic-stripping/
+
+## Enumerable
+
+* **Join(IEnumerable<string>, string)** - Join a collection of string with seperator 
+ 
+ ``` c-sharp
+ var colors = new []{ "Red", "Green", "Blue" };
+ colors.Join(",").ShouldBe("Red,Green,Blue");
+ ```
 
 ## Enum
 

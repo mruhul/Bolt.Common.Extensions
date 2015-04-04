@@ -45,5 +45,11 @@ A library containing common extensions methods. Here are the list
  colors.Join(",").ShouldBe("Red,Green,Blue");
  ```
 
+* **FormatWith(params object[])** - Format string with arguments
+ 
+ ``` c-sharp
+ var greetingsTemplate = "Hello {0}!";
+ greetingsTemplate.FormatWith("World").ShouldBe("Hello World");
+ ```
 
 

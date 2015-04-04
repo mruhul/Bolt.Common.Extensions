@@ -8,6 +8,7 @@ A library containing common extensions methods. Here are the list
   ``` c-sharp
    var name = null;
    name.NullSafe().ShouldBe(string.Empty);
+   "hello".NullSafe().ShouldBe("hello");
   ```
 * **IsEmpty()** - Return true when string is null or empty or whitespace
 
@@ -63,7 +64,6 @@ A library containing common extensions methods. Here are the list
 * **Description()** - Return the description attribute value of an enum
 
  ``` c-sharp
- 
  private enum Color
  {
     [System.ComponentModel.Description("Red Color")]
@@ -77,7 +77,6 @@ A library containing common extensions methods. Here are the list
  
  redColor.Description().ShouldBe("Red Color");
  greenColor.Description().ShouldBe("Green");
- 
  ```
 
 

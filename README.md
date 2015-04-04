@@ -56,7 +56,7 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
 
 ## Enumerable
 
-* **Join(IEnumerable<string>, string)** - Join a collection of string with seperator 
+* **Join(IEnumerable&lt;string&gt;, string)** - Join a collection of string with seperator 
  
  ``` c-sharp
  var colors = new []{ "Red", "Green", "Blue" };

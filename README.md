@@ -54,7 +54,30 @@ A library containing common extensions methods. Here are the list
 
 * **ToSlug(int,bool)** - Generate url friendly version of a string
 
-``` c-sharp
-"Hello World--345".ToSlug().ShouldBe("hello-world");
-```
+ ``` c-sharp
+ "Hello World--345".ToSlug().ShouldBe("hello-world");
+ ```
+ 
+ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in-dotnet-aka-unicode-to-ascii-aka-diacritic-stripping/
+
+* **Description()** - Return the description attribute value of an enum
+
+ ``` c-sharp
+ 
+ private enum Color
+ {
+    [System.ComponentModel.Description("Red Color")]
+    Red,
+    Green,
+    Blue
+ }
+ 
+ var redColor = Color.Red;
+ var greenColor = Color.Green;
+ 
+ redColor.Description().ShouldBe("Red Color");
+ greenColor.Description().ShouldBe("Green");
+ 
+ ```
+
 

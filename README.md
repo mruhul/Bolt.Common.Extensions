@@ -79,4 +79,11 @@ A library containing common extensions methods. Here are the list (Documentation
  greenColor.Description().ShouldBe("Green");
  ```
 
+## Numeric
 
+* **ToInt** - Convert a string to int
+  ``` c-sharp
+  "123".ToInt().ShouldBe(123);
+  "Hello".ToInt().ShouldBe(null);
+  "Hello".ToInt().NullSafe().ShouldBe(0);
+  ```

@@ -44,7 +44,7 @@ A library containing common extensions methods. Here are the list (Documentation
  
  ``` c-sharp
  var greetingsTemplate = "Hello {0}!";
- greetingsTemplate.FormatWith("World").ShouldBe("Hello World");
+ greetingsTemplate.FormatWith("World").ShouldBe("Hello World!");
  ```
 
 * **ToSlug(int,bool)** - Generate url friendly version of a string
@@ -55,6 +55,41 @@ A library containing common extensions methods. Here are the list (Documentation
 Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in-dotnet-aka-unicode-to-ascii-aka-diacritic-stripping/
 
 ## Enumerable
+
+* **IsEmpty()** - Return whether an enumerable is null or empty
+
+  ``` c-sharp
+  
+  IEnumerable<string> values = null;
+  var colors = new List<string>();
+  
+  values.IsEmpty().ShouldBe(true);
+  colors.IsEmpty().ShouldBe(true);
+  
+  ```
+  
+* **HasItem()** - Reverse method of IsEmpty()
+
+  ``` c-sharp
+  
+  IEnumerable<string> values = null;
+  var colors = new List<string>();
+  
+  values.HasItem().ShouldBe(false);
+  colors.HasItem().ShouldBe(false);
+  
+  ``` 
+  
+* **ForEach&lt;T&gt;(Action<T>)** - Do something with each element of an collection
+
+  ``` c-sharp
+  
+  IEnumerable<string> values = null;
+  var colors = new []{"Red","Green"};
+  
+  values.NullSafe().ForEach(x => Console.WriteLine(x)); // do nothing
+  colors.ForEach(color => Console.WriteLine(color)); // print our all colors in collection
+  ```   
 
 * **Join(IEnumerable&lt;string&gt;, string)** - Join a collection of string with seperator 
  

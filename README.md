@@ -239,7 +239,7 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
   values.NullSafe().Count().ShouldBe(0);
   ```
 
-* **NullSafeGet&lt;T&gt; - Execute an func of a object and return the value. When the object is null return default(T)
+* **NullSafeGet&lt;T&gt;** - Execute an func of a object and return the value. When the object is null return default(T)
 
   ``` c-sharp
   Person p = null;
@@ -249,7 +249,7 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
   p.NullSafeGet(x => x.Name).ShouldBe("Test Name");
   ```
   
-* **NullSafeDo&lt;T&gt; - Execute an action related to an object. When the object is null do nothing
+* **NullSafeDo&lt;T&gt;** - Execute an action related to an object. When the object is null do nothing
 
   ``` c-sharp
   Person p = null;

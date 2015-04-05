@@ -128,7 +128,7 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
  colors.Join(",").ShouldBe("Red,Green,Blue");
  ```
  
-* **Append&lt;T&gt;(params T[] items) - add items at end of enumerable
+* **Append&lt;T&gt;(params T[] items)** - add items at end of enumerable
 
  ``` c-sharp
  var colors = new []{"Red", "Green"};
@@ -136,7 +136,7 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
  
  ```
  
-* **Prepend&lt;T&gt;(params T[] items) - add items at beginning of enumerable
+* **Prepend&lt;T&gt;(params T[] items)** - add items at beginning of enumerable
 
  ``` c-sharp
  var colors = new []{"Green", "Blue"};

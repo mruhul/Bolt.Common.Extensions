@@ -34,7 +34,7 @@ namespace Bolt.Common.Extensions
         }
 
         [DebuggerStepThrough]
-        public static string Join(this IEnumerable<string> source, string seperator)
+        public static string Join(this IEnumerable<string> source, string seperator = ",")
         {
             return string.Join(seperator, source);
         }

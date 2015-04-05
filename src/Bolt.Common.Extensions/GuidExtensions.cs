@@ -11,5 +11,11 @@ namespace Bolt.Common.Extensions
             Guid result;
             return Guid.TryParse(source, out result) ? result : (Guid?)null;
         }
+
+        [DebuggerStepThrough]
+        public static bool IsEmpty(this Guid? source)
+        {
+            return source == null || source.Value == Guid.Empty;
+        }
     }
 }

@@ -2,6 +2,29 @@
 
 A library containing common extensions methods. Here are the list (Documentation Not  Completed Yet)
 
+## Guid
+
+* **ToGuid()** - Convert a string to guid
+  
+  ``` c-sharp
+  var id = new Guid("58066027-ED5F-4488-818F-9D93E98EDB4C");
+
+  "58066027-ED5F-4488-818F-9D93E98EDB4C".ToGuid().ShouldBe(id);
+  
+  "d".ToGuid().IsEmpty().ShouldBe(true);
+  
+  ```
+
+* **IsEmpty()** - Return whether a nullable guid is null or empty
+  
+  ``` c-sharp
+  Guid? id = null;
+  Guid? emptyId = Guid.Empty;
+  
+  id.IsEmpty().ShouldBe(true);
+  emptyId.IsEmpty().ShouldBe(true);
+  ``` 
+
 ## String
 * **NullSafe()** - Return a empty string when the string is null
 

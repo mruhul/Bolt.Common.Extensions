@@ -77,6 +77,15 @@ A library containing common extensions methods. Here are the list (Documentation
  ```
 Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in-dotnet-aka-unicode-to-ascii-aka-diacritic-stripping/
 
+## DateTime
+
+* **ToDateTime()** - Convert a string to nullable datetime
+
+  ``` c-sharp
+  "2012-04-05".ToDateTime().ShouldBe(new DateTime(2015,04,05));
+  "dsfsd".ToDateTime().ShouldBe(null);
+  ```
+
 ## Enumerable
 
 * **NullSafe()** - Return an Enumerable.Empty&lt;T&gt; when collection is null

@@ -232,7 +232,7 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
   value.NullSafe().ShouldBe(0);
   ```
 
-* **NullSafe** - Return Enumerable.Emppty<T> when a enumerable is null. Handy for chaining methods
+* **NullSafe()** - Return Enumerable.Emppty<T> when a enumerable is null. Handy for chaining methods
   
   ``` c-sharp
   string[] values = null;

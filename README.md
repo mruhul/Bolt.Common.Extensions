@@ -56,6 +56,13 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
 
 ## Enumerable
 
+* **NullSafe&gt;T&lt;()** - Return an Enumerable.Empty&gt;T&lt; when collection is null
+
+  ``` c-sharp
+  IEnumerable<string> values = null;
+  values.NullSafe().Count().ShouldBe(0);
+  ```
+
 * **IsEmpty()** - Return whether an enumerable is null or empty
 
   ``` c-sharp

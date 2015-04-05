@@ -127,6 +127,23 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
  var colors = new []{ "Red", "Green", "Blue" };
  colors.Join(",").ShouldBe("Red,Green,Blue");
  ```
+ 
+* **Append&lt;T&gt;(params T[] items) - add items at end of enumerable
+
+ ``` c-sharp
+ var colors = new []{"Red", "Green"};
+ colors.Append("Blue"); // colors collection will now have ["Red","Green","Blue"]
+ 
+ ```
+ 
+* **Prepend&lt;T&gt;(params T[] items) - add items at beginning of enumerable
+
+ ``` c-sharp
+ var colors = new []{"Green", "Blue"};
+ colors.Append("Red"); // colors collection will now have ["Red","Green","Blue"]
+ 
+ ``` 
+ 
 
 ## Enum
 

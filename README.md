@@ -56,7 +56,7 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
 
 ## Enumerable
 
-* **NullSafe&gt;T&lt;()** - Return an Enumerable.Empty&gt;T&lt; when collection is null
+* **NullSafe&lt;T&gt;()** - Return an Enumerable.Empty&lt;T&gt; when collection is null
 
   ``` c-sharp
   IEnumerable<string> values = null;

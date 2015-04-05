@@ -1,6 +1,6 @@
 # Bolt.Common.Extensions
 
-A library containing common extensions methods. Here are the list (Documentation Not  Completed Yet)
+A library containing common extensions methods. A nuget package also available https://www.nuget.org/packages/Bolt.Common.Extensions/
 
 ## Guid
 

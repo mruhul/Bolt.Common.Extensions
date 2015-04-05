@@ -219,3 +219,44 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
   "Hello".ToFloat().ShouldBe(null);
   "Hello".ToFloat().NullSafe().ShouldBe(0);
   ```  
+
+# Null Releated
+
+* **NullSafe()** - Return a defult(T) of any struct is null
+
+  ``` c-sharp
+  Color? value = null;
+  value.NullSafe().ShouldBe(Color.None);
+  
+  int? value = null;
+  value.NullSafe().ShouldBe(0);
+  ```
+
+* **NullSafe** - Return Enumerable.Emppty<T> when a enumerable is null. Handy for chaining methods
+  
+  ``` c-sharp
+  string[] values = null;
+  values.NullSafe().Count().ShouldBe(0);
+  ```
+
+* **NullSafeGet&lt;T&gt - Execute an func of a object and return the value. When the object is null return default(T)
+
+  ``` c-sharp
+  Person p = null;
+  p.NullSafeGet(x => x.Name).ShouldBe(null);
+  
+  Person p = new Person { Name = "Test Name" };
+  p.NullSafeGet(x => x.Name).ShouldBe("Test Name");
+  ```
+  
+* **NullSafeDo&lt;T&gt - Execute an action related to an object. When the object is null do nothing
+
+  ``` c-sharp
+  Person p = null;
+  p.NullSafeDo(x => x.Name = "Mr. {0}".FormatWith(x.Name));
+  p.ShouldBeNull();
+  
+  Person p = new Person { Name = "Test Name" };
+  p.NullSafeDo(x => x.Name = "Mr. {0}".FormatWith(x.Name));
+  p.Name.ShouldBe("Mr. Test Name");
+  ```

@@ -4,7 +4,7 @@ A library containing common extensions methods. Here are the list (Documentation
 
 ## Guid
 
-* **ToGuid()** - Convert a string to guid
+* **ToGuid()** - Convert a string to nullable guid?
   
   ``` c-sharp
   var id = new Guid("58066027-ED5F-4488-818F-9D93E98EDB4C");

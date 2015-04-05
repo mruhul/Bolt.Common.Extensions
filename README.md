@@ -147,6 +147,20 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
 
 ## Enum
 
+* **ToEnum&lt;TEnum&gt;** - Convert a string to nulllable enum
+
+  ``` c-sharp
+  enum Color
+  {
+    None,
+    Red
+  }
+  
+  "Red".ToEnum<Color>().ShouldBe(Color.Red);
+  "Unknown".ToEnum<Color>().ShouldBe(null);
+  "Unknown".ToEnum<Color>().NullSafe().ShouldBe(Color.None);
+  ```
+
 * **Description()** - Return the description attribute value of an enum
 
  ``` c-sharp

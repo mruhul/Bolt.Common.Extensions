@@ -50,7 +50,7 @@ A library containing common extensions methods. Here are the list (Documentation
 * **ToSlug(int,bool)** - Generate url friendly version of a string
 
  ``` c-sharp
- "Hello World--345".ToSlug().ShouldBe("hello-world");
+ "Hello World--345".ToSlug().ShouldBe("hello-world-345");
  ```
 Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in-dotnet-aka-unicode-to-ascii-aka-diacritic-stripping/
 
@@ -99,4 +99,27 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
   "123.56".ToDecimal().ShouldBe(123.56);
   "Hello".ToDecimal().ShouldBe(null);
   "Hello".ToDecimal().NullSafe().ShouldBe(0);
+  ```  
+* **ToDouble()** - Convert a string to nullable double?
+
+  ``` c-sharp
+  "123.56".ToDouble().ShouldBe(123.56);
+  "Hello".ToDouble().ShouldBe(null);
+  "Hello".ToDouble().NullSafe().ShouldBe(0);
+  ```  
+
+* **ToLong()** - Convert a string to nullable long?
+
+  ``` c-sharp
+  "123".ToLong().ShouldBe(123);
+  "Hello".ToLong().ShouldBe(null);
+  "Hello".ToLong().NullSafe().ShouldBe(0);
+  ```  
+
+* **ToFloat()** - Convert a string to nullable float?
+
+  ``` c-sharp
+  "1.56".ToFloat().ShouldBe(1.56);
+  "Hello".ToFloat().ShouldBe(null);
+  "Hello".ToFloat().NullSafe().ShouldBe(0);
   ```  

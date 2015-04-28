@@ -229,7 +229,7 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
   "Hello".ToFloat().NullSafe().ShouldBe(0);
   ```  
 
-# Null Releated
+# Null Related
 
 * **NullSafe()** - Return a defult(T) of any struct is null
 

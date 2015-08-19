@@ -14,7 +14,7 @@ namespace Bolt.Common.Extensions
         }
 
         [DebuggerStepThrough]
-        public static TStruct ValueOrDefault<TStruct>(this TStruct? source, TStruct defaultValue) where TStruct : struct
+        public static TStruct NullSafe<TStruct>(this TStruct? source, TStruct defaultValue) where TStruct : struct
         {
             return source ?? defaultValue;
         }

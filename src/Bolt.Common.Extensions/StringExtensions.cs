@@ -16,6 +16,12 @@ namespace Bolt.Common.Extensions
         }
 
         [DebuggerStepThrough]
+        public static string NullSafe(this string source, string defaultValue)
+        {
+            return source ?? defaultValue;
+        }
+
+        [DebuggerStepThrough]
         public static bool IsEmpty(this string source)
         {
             return string.IsNullOrWhiteSpace(source);

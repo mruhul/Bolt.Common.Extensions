@@ -13,6 +13,13 @@ namespace Bolt.Common.Extensions.UnitTests
             source.NullSafe().ShouldBe(expectedValue);
         }
 
+        [TestCase(null, 1, 1)]
+        [TestCase(2, 1, 2)]
+        public void ValueOrDefaultTests(int? source, int defaultValue, int expectedValue)
+        {
+            source.ValueOrDefault(defaultValue).ShouldBe(expectedValue);
+        }
+
         [TestCase(null, false)]
         [TestCase(true, true)]
         [TestCase(false, false)]
@@ -27,5 +34,7 @@ namespace Bolt.Common.Extensions.UnitTests
         {
             source.NullSafe().ShouldBe(expectedValue);
         }
+
+
     }
 }

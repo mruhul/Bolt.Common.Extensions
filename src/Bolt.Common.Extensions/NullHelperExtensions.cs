@@ -14,6 +14,12 @@ namespace Bolt.Common.Extensions
         }
 
         [DebuggerStepThrough]
+        public static TStruct ValueOrDefault<TStruct>(this TStruct? source, TStruct defaultValue) where TStruct : struct
+        {
+            return source ?? defaultValue;
+        }
+
+        [DebuggerStepThrough]
         public static IEnumerable<T> NullSafe<T>(this IEnumerable<T> source)
         {
             return source ?? Enumerable.Empty<T>();

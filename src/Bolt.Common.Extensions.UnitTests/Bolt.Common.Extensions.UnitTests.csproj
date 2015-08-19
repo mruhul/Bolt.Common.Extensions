@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DateTimeExtensionsTests.cs" />
+    <Compile Include="DictionaryExtensionsTests.cs" />
     <Compile Include="EnumExtensionsTest.cs" />
     <Compile Include="NullSafeExtensionsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

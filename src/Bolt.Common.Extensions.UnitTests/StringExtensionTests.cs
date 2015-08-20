@@ -40,5 +40,16 @@ namespace Bolt.Common.Extensions.UnitTests
         {
             input.ToSlug().ShouldBe(expected);
         }
+
+        [TestCase(null, null, null)]
+        [TestCase("", null, null)]
+        [TestCase(" ", null, null)]
+        [TestCase(null, "hello", "hello")]
+        [TestCase("", "hello", "hello")]
+        [TestCase(" ", "hello", "hello")]
+        public void EmptyAlternativeTest(string value, string alt, string exp)
+        {
+            value.EmptyAlternative(alt).ShouldBe(exp);
+        }
     }
 }

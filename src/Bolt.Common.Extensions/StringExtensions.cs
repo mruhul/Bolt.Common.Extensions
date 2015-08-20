@@ -22,6 +22,12 @@ namespace Bolt.Common.Extensions
         }
 
         [DebuggerStepThrough]
+        public static string EmptyAlternative(this string source, string defaultValue)
+        {
+            return string.IsNullOrWhiteSpace(source) ? defaultValue : source;
+        }
+
+        [DebuggerStepThrough]
         public static bool IsEmpty(this string source)
         {
             return string.IsNullOrWhiteSpace(source);

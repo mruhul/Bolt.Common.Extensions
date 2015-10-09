@@ -155,7 +155,7 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
 
 ## Dictionary
 
-* **GetValueOrDefault(TKey key, [TValue defaultValue])** - Return an value of the key if exists otherwise return the default value.
+* **GetValueOrDefault(TKey key, [TValue defaultValue])** - Return value of the key if exists otherwise return the default(TValue) or supplied default value.
 
   ``` c-sharp
   var source = new Dictionary<string, string> {{"name", "ruhul"}};

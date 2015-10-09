@@ -152,6 +152,18 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
  colors.Append("Red"); // colors collection will now have ["Red","Green","Blue"]
  
  ``` 
+
+## Dictionary
+
+* **GetValueOrDefault(TKey key, [TValue defaultValue])** - Return an value of the key if exists otherwise return the default value.
+
+  ``` c-sharp
+  var source = new Dictionary<string, string> {{"name", "ruhul"}};
+            
+  source.GetValueOrDefault("name").ShouldBe("ruhul");
+  source.GetValueOrDefault("postcode").ShouldBe(null);
+  source.GetValueOrDefault("postcode", "3000").ShouldBe("3000");
+  ```
  
 
 ## Enum

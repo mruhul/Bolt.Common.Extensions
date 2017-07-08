@@ -9,7 +9,7 @@ namespace Bolt.Common.Extensions
         {
             if (value == null) return "";
  
-            var normalised = value.Normalize(NormalizationForm.FormKD);
+            var normalised = value;
 
             var len = normalised.Length;
             var prevDash = false;

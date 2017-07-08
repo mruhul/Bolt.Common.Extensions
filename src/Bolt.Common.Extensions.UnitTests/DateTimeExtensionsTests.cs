@@ -1,13 +1,13 @@
 using System;
-using NUnit.Framework;
 using Shouldly;
+using Xunit;
+
 
 namespace Bolt.Common.Extensions.UnitTests
 {
-    [TestFixture]
     public static class DateTimeExtensionsTests
     {
-        [Test]
+        [Fact]
         public static void ToDateTimeTests()
         {
             var dateStr = "2015-04-04";

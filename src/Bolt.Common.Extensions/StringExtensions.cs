@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.CompilerServices;
+using System.Reflection;
 
 namespace Bolt.Common.Extensions
 {
@@ -55,7 +55,7 @@ namespace Bolt.Common.Extensions
         public static string Description(this Enum source)
         {
             var value = source.ToString();
-            var memberInfo = source.GetType().GetMember(value).FirstOrDefault();
+            var memberInfo = source.GetType().GetTypeInfo().GetMember(value).FirstOrDefault();
 
             if (memberInfo == null) return value;
             

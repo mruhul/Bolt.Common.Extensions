@@ -1,24 +1,24 @@
-using NUnit.Framework;
+using Xunit;
 using Shouldly;
 
 namespace Bolt.Common.Extensions.UnitTests
 {
-    [TestFixture]
     public class StringExtensionTests
     {
-        [TestCase(null, null, true)]
-        [TestCase("", null, false)]
-        [TestCase("", "", true)]
-        [TestCase("hEllo world!", "Hello World!", true)]
-        [TestCase("same", "same", true)]
-        [TestCase("same", "same ", false)]
-        [TestCase("same", "samed", false)]
+        [Theory]
+        [InlineData(null, null, true)]
+        [InlineData("", null, false)]
+        [InlineData("", "", true)]
+        [InlineData("hEllo world!", "Hello World!", true)]
+        [InlineData("same", "same", true)]
+        [InlineData("same", "same ", false)]
+        [InlineData("same", "samed", false)]
         public void IsSameTests(string source, string compareWith, bool expectedResult)
         {
             source.IsSame(compareWith).ShouldBe(expectedResult);
         }
 
-        [Test]
+        [Fact]
         public void JoinTests()
         {
             string[] data = new []{"Kingsville","3012"};
@@ -26,27 +26,29 @@ namespace Bolt.Common.Extensions.UnitTests
             data.NullSafe().Join(",").ShouldBe("Kingsville,3012");
         }
 
-        [Test]
+        [Fact]
         public void DescriptionTests()
         {
             Color.Red.Description().ShouldBe("Red Color");
             Color.Green.Description().ShouldBe("Green");
         }
 
-        [TestCase("Hello World ", "hello-world")]
-        [TestCase("Hello World--", "hello-world")]
-        [TestCase("Hello--World", "hello-world")]
+        [Theory]
+        [InlineData("Hello World ", "hello-world")]
+        [InlineData("Hello World--", "hello-world")]
+        [InlineData("Hello--World", "hello-world")]
         public void ToSlugTests(string input, string expected)
         {
             input.ToSlug().ShouldBe(expected);
         }
 
-        [TestCase(null, null, null)]
-        [TestCase("", null, null)]
-        [TestCase(" ", null, null)]
-        [TestCase(null, "hello", "hello")]
-        [TestCase("", "hello", "hello")]
-        [TestCase(" ", "hello", "hello")]
+        [Theory]
+        [InlineData(null, null, null)]
+        [InlineData("", null, null)]
+        [InlineData(" ", null, null)]
+        [InlineData(null, "hello", "hello")]
+        [InlineData("", "hello", "hello")]
+        [InlineData(" ", "hello", "hello")]
         public void EmptyAlternativeTest(string value, string alt, string exp)
         {
             value.EmptyAlternative(alt).ShouldBe(exp);

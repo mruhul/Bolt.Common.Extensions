@@ -1,40 +1,37 @@
-﻿using NUnit.Framework;
+﻿using Xunit;
 using Shouldly;
 
 namespace Bolt.Common.Extensions.UnitTests
 {
-    [TestFixture]
     public class NullSafeExtensionsTests
     {
-        [TestCase(null, 0)]
-        [TestCase(1, 1)]
+        [InlineData(null, 0)]
+        [InlineData(1, 1)]
         public void NullIntTests(int? source, int expectedValue)
         {
             source.NullSafe().ShouldBe(expectedValue);
         }
 
-        [TestCase(null, 1, 1)]
-        [TestCase(2, 1, 2)]
+        [InlineData(null, 1, 1)]
+        [InlineData(2, 1, 2)]
         public void ValueOrDefaultTests(int? source, int defaultValue, int expectedValue)
         {
             source.NullSafe(defaultValue).ShouldBe(expectedValue);
         }
 
-        [TestCase(null, false)]
-        [TestCase(true, true)]
-        [TestCase(false, false)]
+        [InlineData(null, false)]
+        [InlineData(true, true)]
+        [InlineData(false, false)]
         public void NullBoolTests(bool? source, bool expectedValue)
         {
             source.NullSafe().ShouldBe(expectedValue);
         }
 
-        [TestCase(null, Color.None)]
-        [TestCase(Color.Red, Color.Red)]
+        [InlineData(null, Color.None)]
+        [InlineData(Color.Red, Color.Red)]
         public void NullEnumTests(Color? source, Color expectedValue)
         {
             source.NullSafe().ShouldBe(expectedValue);
         }
-
-
     }
 }

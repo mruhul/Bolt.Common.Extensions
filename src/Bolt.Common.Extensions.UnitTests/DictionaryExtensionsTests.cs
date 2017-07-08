@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
-using NUnit.Framework;
 using Shouldly;
+using Xunit;
 
 namespace Bolt.Common.Extensions.UnitTests
 {
-    [TestFixture]
     public class DictionaryExtensionsTests
     {
-        [Test]
+        [Fact]
         public void GetValueOrDefaultTest()
         {
             var source = new Dictionary<string, string> {{"name", "ruhul"}};

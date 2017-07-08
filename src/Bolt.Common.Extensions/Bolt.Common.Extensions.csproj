@@ -1,6 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <Description>Common useful extensions</Description>
+    <Authors>Mohammad Ruhul Amin</Authors>
     <TargetFrameworks>netstandard1.6;net452</TargetFrameworks>
   </PropertyGroup>
 

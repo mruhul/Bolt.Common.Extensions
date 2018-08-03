@@ -1,8 +1,13 @@
-set /p packageName="Project name: "
-set /p version="Version: "
-echo %packageName%
-cd %cd%/%packageName%/
-dotnet pack -c Release --version-suffix %version%
-set /p apiKey="Api Key: "
-dotnet nuget push %cd%\bin\Release\%packageName%.%version%.nupkg -s https://www.nuget.org/api/v2/package -k %apiKey%
+@echo off
+mkdir nupkgs
+cd nupkgs
+del /F /Q *.*
+cd ..
+cd "Bolt.Common.Extensions"
+dotnet restore
+dotnet build -c Release
+dotnet pack -c Release --no-build --output ../nupkgs
+set /p key="Enter Key: "
+cd ../nupkgs
+dotnet nuget push *.nupkg -s https://www.nuget.org/api/v2/package/ -k %key%
 cd ..

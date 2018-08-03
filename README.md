@@ -281,3 +281,21 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
   p.NullSafeDo(x => x.Name = "Mr. {0}".FormatWith(x.Name));
   p.Name.ShouldBe("Mr. Test Name");
   ```
+
+# Task related
+
+* **WrapInTask** - Fluently convert any object to a Complated Task
+
+  ``` c-sharp
+  public class InMemoryStockProvider : IStockProvider
+  {
+    public Task<Stock> GetAsync(string id)
+    {
+      var stock = GetAssetFromMemory(id);
+      
+      // instead of writing as 
+      // Task.FromResult(stock);
+      return stock.WrapInTask();
+    }  
+  }
+  ```

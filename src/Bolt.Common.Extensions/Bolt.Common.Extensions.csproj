@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <Description>Common useful extensions</Description>
+    <Version>2.1.0</Version>
     <Authors>Mohammad Ruhul Amin</Authors>
-    <TargetFrameworks>netstandard1.6;net452</TargetFrameworks>
+    <AssemblyName>Bolt.Common.Extensions</AssemblyName>
+    <PackageId>Bolt.Common.Extensions</PackageId>
+    <TargetFrameworks>netstandard1.6;netstandard2.0;net452</TargetFrameworks>
   </PropertyGroup>
 
 

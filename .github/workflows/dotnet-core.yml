@@ -21,6 +21,6 @@ jobs:
     - name: Install dependencies
       run: dotnet restore ./src/Bolt.Common.Extensions.sln
     - name: Build
-      run: dotnet build ./src/Bold.Common.Extensions.sln --configuration Release --no-restore
+      run: dotnet build ./src/Bolt.Common.Extensions.sln --configuration Release --no-restore
     - name: Test
-      run: dotnet test ./src/Bold.Common.Extensions.sln --no-restore --verbosity normal
+      run: dotnet test ./src/Bolt.Common.Extensions.sln --no-restore --verbosity normal

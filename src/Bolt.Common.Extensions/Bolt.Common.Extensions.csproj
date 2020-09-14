@@ -2,16 +2,16 @@
 
   <PropertyGroup>
     <Description>Common useful extensions</Description>
-    <Version>2.1.1</Version>
+    <Version>3.0.0</Version>
     <Authors>Mohammad Ruhul Amin</Authors>
     <AssemblyName>Bolt.Common.Extensions</AssemblyName>
     <PackageId>Bolt.Common.Extensions</PackageId>
-    <TargetFrameworks>netstandard1.6;netstandard2.0;net452</TargetFrameworks>
+    <TargetFrameworks>netstandard1.6;netstandard2.0;netstandard2.1</TargetFrameworks>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net452'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.6'">
     <PackageReference Include="System.ComponentModel.Primitives" Version="4.3.0" />
   </ItemGroup>
 

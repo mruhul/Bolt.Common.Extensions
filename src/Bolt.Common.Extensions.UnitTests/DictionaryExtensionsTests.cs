@@ -11,9 +11,9 @@ namespace Bolt.Common.Extensions.UnitTests
         {
             var source = new Dictionary<string, string> {{"name", "ruhul"}};
 
-            source.GetValueOrDefault("name").ShouldBe("ruhul");
-            source.GetValueOrDefault("postcode").ShouldBe(null);
-            source.GetValueOrDefault("postcode", "3000").ShouldBe("3000");
+            source.TryGetValueOrDefault("name").ShouldBe("ruhul");
+            source.TryGetValueOrDefault("postcode").ShouldBe(null);
+            source.TryGetValueOrDefault("postcode", "3000").ShouldBe("3000");
         }
     }
 }

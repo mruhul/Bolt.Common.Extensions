@@ -24,3 +24,5 @@ jobs:
       run: dotnet build ./src/Bolt.Common.Extensions.sln --configuration Release --no-restore
     - name: Test
       run: dotnet test ./src/Bolt.Common.Extensions.sln --no-restore --verbosity normal
+    - name: Pack
+      run: dotnet pack ./src/Bolt.Common.Extensions/Bolt.Common.Extensions.csproj -c Release --no-build --output ../nupkgs

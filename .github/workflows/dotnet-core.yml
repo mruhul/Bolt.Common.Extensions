@@ -8,12 +8,16 @@ on:
     branches: [ master ]
 
 jobs:
+  checkout:
+     runs-on: ubuntu-latest
+     steps:
+       - uses: actions/checkout@v2
+         
   build:
-
+    needs: checkout
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:

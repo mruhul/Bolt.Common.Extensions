@@ -27,4 +27,4 @@ jobs:
     - name: Pack
       run: dotnet pack ./src/Bolt.Common.Extensions/Bolt.Common.Extensions.csproj -c Release --no-build --output ../nupkgs
     - name: Publish
-      run: dotnet nuget push *.nupkg -s https://www.nuget.org/api/v2/package/ -k ${{ secrets.nugetkey }}
+      run: dotnet nuget push ./nupkgs/**.nupkg -s https://www.nuget.org/api/v2/package/ -k ${{ secrets.nugetkey }}

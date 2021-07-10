@@ -8,19 +8,24 @@ on:
     branches: [ master ]
 
 jobs:
+         
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.301
-    - name: Install dependencies
-      run: dotnet restore ./src/Bolt.Common.Extensions.sln
-    - name: Build
-      run: dotnet build ./src/Bolt.Common.Extensions.sln --configuration Release --no-restore
-    - name: Test
-      run: dotnet test ./src/Bolt.Common.Extensions.sln --no-restore --verbosity normal
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.301
+      - name: Install dependencies
+        run: dotnet restore ./src/Bolt.Common.Extensions.sln
+      - name: Build
+        run: dotnet build ./src/Bolt.Common.Extensions.sln --configuration Release --no-restore
+      - name: Test
+        run: dotnet test ./src/Bolt.Common.Extensions.sln --no-restore --verbosity normal
+      - name: Pack
+        run: dotnet pack ./src/Bolt.Common.Extensions/Bolt.Common.Extensions.csproj -c Release --no-build --output ../nupkgs
+      - name: Publish
+        run: dotnet nuget push ../nupkgs/**.nupkg -s https://www.nuget.org/api/v2/package/ -k ${{ secrets.nugetkey }} --skip-duplicate

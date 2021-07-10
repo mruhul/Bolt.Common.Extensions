@@ -22,5 +22,32 @@ namespace Bolt.Common.Extensions.UnitTests
             date = dateStr.ToDateTime("dd/MM/yyyy");
             date.ShouldBe(new DateTime(2015,3,4));
         }
+
+        [Fact]
+        public static void ToUtcDateTimeTests()
+        {
+            var utcDateFromUtcDateString = "2021-07-10T12:40:21.3389002Z";
+            var utcDateFromLocalDateString = "2021-07-10T22:40:21.3389002+10:00";
+
+            var utcDateFromUtcString = utcDateFromUtcDateString.ToUtcDateTime();
+            var utcDateFromLocalString = utcDateFromLocalDateString.ToUtcDateTime();
+
+            utcDateFromUtcString.ShouldBe(utcDateFromLocalString);
+        }
+
+        [Fact]
+        public static void FormatAsUtcTests()
+        {
+            var utcDateAsString = "2021-07-10T12:40:21.3389002Z";
+            var dateAsString = "2021-07-10T22:40:21.3389002+10:00";
+
+            var utcDate = DateTime.Parse(utcDateAsString, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.RoundtripKind);
+            var localDate = DateTime.Parse(dateAsString, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.RoundtripKind);
+
+            var utcDateString = utcDate.FormatAsUtc();
+            var localDateString = localDate.FormatAsUtc();
+
+            utcDateString.ShouldBe(localDateString);
+        }
     }
 }

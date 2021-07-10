@@ -91,6 +91,21 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
   "2012-04-05".ToDateTime().ShouldBe(new DateTime(2015,04,05));
   "dsfsd".ToDateTime().ShouldBe(null);
   ```
+- **ToUtcDateTime()** - Convert a string to UTC datetime. The method assumes the string is formatted as `RoundTripKind (o)`
+
+  ```c-sharp
+  var utcDateFromUtcDateString = "2021-07-10T12:40:21.3389002Z".ToUtcDateTime();
+  var utcDateFromLocalDateString = "2021-07-10T22:40:21.3389002+10:00".ToUtcDateTime();
+  
+  utcDateFromUtcDateString.ShouldBe(utcDateFromLocalString);
+
+  ```
+- **FormatAsUtc()** - Format a datetime to utc format `RoundTripKind (o)`. If the supplied datetime kind is not UTC then this functiona convert the datetime to universal time and then format to stirng
+
+  ```
+  var utcDateString = utcDate.FormatAsUtc(); // should print date as format similar to `2021-07-10T12:40:21.3389002Z`
+  var localDateString = localDate.FormatAsUtc(); // should convert the time to Unversal time and then format similar to `2021-07-10T12:40:21.3389002Z`
+  ```
 
 ## Enumerable
 

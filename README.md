@@ -91,7 +91,7 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
   "2012-04-05".ToDateTime().ShouldBe(new DateTime(2015,04,05));
   "dsfsd".ToDateTime().ShouldBe(null);
   ```
-- **ToUtcDateTime()** - Convert a string to UTC datetime. The method assumes the string is formatted as `RoundTripKind (o)`
+- **ToUtcDateTime()** - Convert a string to UTC datetime. The method assumes the string is formatted as `RoundTripKind (o)`. If the converted datetime not UTC kind then transform to universaltime before return.
 
   ```c-sharp
   var utcDateFromUtcDateString = "2021-07-10T12:40:21.3389002Z".ToUtcDateTime();

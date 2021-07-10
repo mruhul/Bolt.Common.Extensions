@@ -100,7 +100,7 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
   utcDateFromUtcDateString.ShouldBe(utcDateFromLocalString);
 
   ```
-- **FormatAsUtc()** - Format a datetime to utc format `RoundTripKind (o)`. If the supplied datetime kind is not UTC then this functiona convert the datetime to universal time and then format to stirng
+- **FormatAsUtc()** - Format a datetime to utc format `RoundTripKind (o)`. If the supplied datetime kind is not UTC then this function convert the datetime to universal time and then format to stirng
 
   ```
   var utcDateString = utcDate.FormatAsUtc(); // should print date as format similar to `2021-07-10T12:40:21.3389002Z`

@@ -1,5 +1,6 @@
 using Xunit;
 using Shouldly;
+using System.Collections.Generic;
 
 namespace Bolt.Common.Extensions.UnitTests
 {
@@ -52,6 +53,45 @@ namespace Bolt.Common.Extensions.UnitTests
         public void EmptyAlternativeTest(string value, string alt, string exp)
         {
             value.EmptyAlternative(alt).ShouldBe(exp);
+        }
+
+        [Theory]
+        [InlineData(null, null, false)]
+        [InlineData(null, "", false)]
+        [InlineData("", null, false)]
+        [InlineData("", "", true)]
+        [InlineData("Test", "te", true)]
+        [InlineData("Test", "Te", true)]
+        [InlineData("Test", "", true)]
+        public void StartsWithIgnoreCaseTest(string input, string startsWithValue, bool expected)
+        {
+            var got = input.StartsWithIgnoreCase(startsWithValue);
+            got.ShouldBe(expected);
+        }
+
+
+
+        [Theory]
+        [InlineData(null, null, false)]
+        [InlineData(null, "", false)]
+        [InlineData("", null, false)]
+        [InlineData("", "", true)]
+        [InlineData("Test", "te", true)]
+        [InlineData("Test", "Te", true)]
+        [InlineData("Test", "es", true)]
+        [InlineData("Test", "ES", true)]
+        [InlineData("Test", "", true)]
+        public void ContainsIgnoreCaseTest(string input, string startsWithValue, bool expected)
+        {
+            var got = input.ContainsIgnoreCase(startsWithValue);
+            got.ShouldBe(expected);
+        }
+
+
+        [Fact]
+        public void EqualsAnyIgnoreCaseReturnFalseWhenAtleastOneMatch()
+        {
+            "test".EqualsAnyIgnoreCase("hello", "teST").ShouldBeTrue();
         }
     }
 }

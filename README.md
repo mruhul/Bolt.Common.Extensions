@@ -185,23 +185,23 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
 - **Join(IEnumerable&lt;string&gt;, string)** - Join a collection of string with seperator
 
 ```c-sharp
-var colors = new []{ "Red", "Green", "Blue" };
-colors.Join(",").ShouldBe("Red,Green,Blue");
+  var colors = new []{ "Red", "Green", "Blue" };
+  colors.Join(",").ShouldBe("Red,Green,Blue");
 ```
 
 - **Append&lt;T&gt;(params T[] items)** - add items at end of enumerable
 
 ```c-sharp
-var colors = new []{"Red", "Green"};
-colors.Append("Blue"); // colors collection will now have ["Red","Green","Blue"]
+  var colors = new []{"Red", "Green"};
+  colors.Append("Blue"); // colors collection will now have ["Red","Green","Blue"]
 
 ```
 
 - **Prepend&lt;T&gt;(params T[] items)** - add items at beginning of enumerable
 
 ```c-sharp
-var colors = new []{"Green", "Blue"};
-colors.Append("Red"); // colors collection will now have ["Red","Green","Blue"]
+  var colors = new []{"Green", "Blue"};
+  colors.Append("Red"); // colors collection will now have ["Red","Green","Blue"]
 
 ```
 
@@ -216,6 +216,41 @@ colors.Append("Red"); // colors collection will now have ["Red","Green","Blue"]
   source.TryGetValueOrDefault("postcode").ShouldBe(null);
   source.TryGetValueOrDefault("postcode", "3000").ShouldBe("3000");
   ```
+
+- **Merge(IDictionary<TKey,TValue>)** - Merge a dictionary with another dictionary and return a new dictionary instance
+
+  ```c-sharp
+  var source = new Dictionary<string,string>{
+    ["one"] = "1"
+  }
+
+  var other = new Dictionary<string,string>{
+    ["two"] = "2"
+  }
+
+  var got = source.Merge(other);
+  got.Count.ShouldBe(2);
+  got["one"].ShouldBe("1");
+  got["two"].ShouldBe("2");
+  ```
+
+- **Append(IDictionary<TKey,TValue>)** - Same as merge, difference is Append alter the supplied source dictionary and add new items in source dictionary. Merge method doesn't do any change in source dictionary
+
+  ```c-sharp
+  var source = new Dictionary<string,string>{
+    ["one"] = "1"
+  }
+
+  var other = new Dictionary<string,string>{
+    ["two"] = "2"
+  }
+
+  _ = source.Append(other);
+  source.Count.ShouldBe(2);
+  source["one"].ShouldBe("1");
+  source["two"].ShouldBe("2");
+  ```
+
 
 ## Enum
 

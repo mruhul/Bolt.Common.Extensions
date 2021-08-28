@@ -99,6 +99,20 @@ grretings.IsSame(name).ShouldBe(false);
   sut.IsStartWith("s").ShouldBe(false);
 ```
 
+- **IsEndWith(string value)** - Check whether a string ends with supplied value in case insensitive way
+
+  ```c-sharp
+  var sut = "hello world";
+  sut.IsEndWith("WORLD").ShouldBeTrue();
+  ```
+
+- **IsContain(string value)** - check whether a string contains in source string in case insensitive way
+
+  ```c-sharp
+  var sut = "Hello World!";
+  sut.IsContain("WORLD").ShouldBeTrue();
+  ```
+
 - **FormatWith(params object[])** - Format string with arguments
 
 ```c-sharp

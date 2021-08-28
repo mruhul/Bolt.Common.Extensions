@@ -98,6 +98,21 @@ namespace Bolt.Common.Extensions
 
 
         /// <summary>
+        /// Check a string ends with supplied string with ordinal ignore case
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        [DebuggerStepThrough]
+        public static bool IsEndWith(this string source, string value)
+        {
+            if (source == null || value == null) return false;
+
+            return source.EndsWith(value, StringComparison.OrdinalIgnoreCase);
+        }
+
+
+        /// <summary>
         /// Check a string starts with supplied string with ordinal ignore case
         /// </summary>
         /// <param name="source"></param>

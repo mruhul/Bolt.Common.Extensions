@@ -221,6 +221,13 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
 
 ## Dictionary
 
+- **NullSafe()** - Return a new instance of dictionary if supplied source is null
+
+  ```c-sharp
+  Dictionary<string,string> source = null;
+  source.NullSafe().Count.ShouldBe(0);
+  ```
+
 - **GetValueOrDefault(TKey key, [TValue defaultValue])** - Return value of the key if exists otherwise return the default(TValue) or supplied default value.
 
   ```c-sharp

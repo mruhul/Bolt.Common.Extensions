@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bolt.Common.Extensions", "Bolt.Common.Extensions\Bolt.Common.Extensions.csproj", "{7BA0F585-7245-4CD4-916B-7BCAB3D27D07}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{2E17C6E1-C85D-43EB-B368-A60A98D0D41F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bolt.Common.Extensions.UnitTests", "Bolt.Common.Extensions.UnitTests\Bolt.Common.Extensions.UnitTests.csproj", "{148A01F5-8A3A-49D6-BB59-8FE5F87A0FD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bolt.Common.Extensions.UnitTests", "Bolt.Common.Extensions.UnitTests\Bolt.Common.Extensions.UnitTests.csproj", "{148A01F5-8A3A-49D6-BB59-8FE5F87A0FD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,5 +29,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{148A01F5-8A3A-49D6-BB59-8FE5F87A0FD4} = {2E17C6E1-C85D-43EB-B368-A60A98D0D41F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5AA2406A-5A88-4EB7-892D-93560F2C0325}
 	EndGlobalSection
 EndGlobal

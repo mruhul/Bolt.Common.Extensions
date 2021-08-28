@@ -86,6 +86,18 @@ grretings.IsSame(name).ShouldBe(false);
   got.ShouldBe(false);
 ```
 
+- **IsStartWith(string value)** - check whether a string starts wtih supplied value in case insensitive way
+
+```c-sharp
+  // return true as source starts with supplied value
+  var sut = "hello world!"
+  var got = sut.IsStartWith("HELLO");
+  got.ShouldBe(true);
+
+  // return false when source is null
+  string sut = null;
+  sut.IsStartWith("s").ShouldBe(false);
+```
 
 - **FormatWith(params object[])** - Format string with arguments
 

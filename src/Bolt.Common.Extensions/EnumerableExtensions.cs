@@ -79,7 +79,7 @@ namespace Bolt.Common.Extensions
         /// <param name="value"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool ContainsIgnoreCase(this IEnumerable<string> source, string value)
+        public static bool IsContain(this IEnumerable<string> source, string value)
         {
             if (source == null) return false;
             
@@ -100,16 +100,43 @@ namespace Bolt.Common.Extensions
         /// Check whether any of the supplied value exists in collection in case insensitive way
         /// </summary>
         /// <param name="source"></param>
-        /// <param name="value"></param>
+        /// <param name="values"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool ContainsAnyIgnoreCase(this IEnumerable<string> source, params string[] value)
+        public static bool IsContainAny(this IEnumerable<string> source, params string[] values)
         {
             if (source == null) return false;
 
-            if (value == null) return false;
+            if (values == null) return false;
 
-            foreach(var valueToFind in value)
+            foreach(var valueToFind in values)
+            {
+                foreach (var item in source)
+                {
+                    if (string.Equals(item, valueToFind, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Check whether any of the supplied value exists in collection in case insensitive way
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        [DebuggerStepThrough]
+        public static bool IsContainAny(this IEnumerable<string> source, IEnumerable<string> values)
+        {
+            if (source == null) return false;
+
+            if (values == null) return false;
+
+            foreach (var valueToFind in values)
             {
                 foreach (var item in source)
                 {

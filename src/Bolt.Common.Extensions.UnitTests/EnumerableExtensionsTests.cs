@@ -60,7 +60,7 @@ namespace Bolt.Common.Extensions.UnitTests
         {
             List<string> collection = null;
 
-            collection.ContainsIgnoreCase("test").ShouldBe(false);
+            collection.IsContain("test").ShouldBe(false);
         }
 
         [Fact]
@@ -71,7 +71,7 @@ namespace Bolt.Common.Extensions.UnitTests
                 "test"
             };
 
-            collection.ContainsIgnoreCase(null).ShouldBe(false);
+            collection.IsContain(null).ShouldBe(false);
         }
 
 
@@ -84,7 +84,7 @@ namespace Bolt.Common.Extensions.UnitTests
                 "test"
             };
 
-            collection.ContainsIgnoreCase(string.Empty).ShouldBe(false);
+            collection.IsContain(string.Empty).ShouldBe(false);
         }
 
         [Fact]
@@ -95,7 +95,7 @@ namespace Bolt.Common.Extensions.UnitTests
                 "test-1"
             };
 
-            collection.ContainsIgnoreCase("test").ShouldBe(false);
+            collection.IsContain("test").ShouldBe(false);
         }
 
         [Fact]
@@ -107,7 +107,7 @@ namespace Bolt.Common.Extensions.UnitTests
                 "test"
             };
 
-            collection.ContainsIgnoreCase("test").ShouldBe(true);
+            collection.IsContain("test").ShouldBe(true);
         }
 
 
@@ -120,7 +120,7 @@ namespace Bolt.Common.Extensions.UnitTests
                 "TEst"
             };
 
-            collection.ContainsIgnoreCase("test").ShouldBe(true);
+            collection.IsContain("test").ShouldBe(true);
         }
 
         [Fact]
@@ -133,7 +133,7 @@ namespace Bolt.Common.Extensions.UnitTests
                 "three"
             };
 
-            collection.ContainsAnyIgnoreCase("Two", "three").ShouldBeTrue();
+            collection.IsContainAny("Two", "three").ShouldBeTrue();
         }
     }
 }

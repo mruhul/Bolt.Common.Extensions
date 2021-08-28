@@ -136,6 +136,30 @@ namespace Bolt.Common.Extensions
         }
 
         /// <summary>
+        /// Compare supplied values with the source string in case insensitive way and return true
+        /// when any one of the supplied values are equal to the source string
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        [DebuggerStepThrough]
+        public static bool IsSameAny(this string source, IEnumerable<string> values)
+        {
+            if (source == null) return false;
+            if (values == null) return false;
+
+            foreach (var item in values)
+            {
+                if (string.Equals(item, source, StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// Join collection strings with supplied seperator
         /// </summary>
         /// <param name="source"></param>

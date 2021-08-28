@@ -68,6 +68,25 @@ greetings.IsSame(greetingsLowerCase).ShouldBe(true);
 grretings.IsSame(name).ShouldBe(false);
 ```
 
+- **IsSameAny(params string[] values)** - return true when any of the supplied value match with source string. comparison done in case insensitive way
+
+```c-sharp
+  // match case insesnsitive way
+  var sut = "hello";
+  var got = sut.IsSameAny("Hello", "test");
+  got.ShouldBe(true);
+
+  // no match
+  var got = sut.IsSameAny("test", "test2");
+  got.ShouldBe(false);
+
+  // null safe
+  var sut = null;
+  got = sut.IsSameAny("test");
+  got.ShouldBe(false);
+```
+
+
 - **FormatWith(params object[])** - Format string with arguments
 
 ```c-sharp

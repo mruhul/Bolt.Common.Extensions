@@ -89,9 +89,16 @@ namespace Bolt.Common.Extensions.UnitTests
 
 
         [Fact]
-        public void EqualsAnyIgnoreCaseReturnFalseWhenAtleastOneMatch()
+        public void IsSameAnyReturnFalseWhenAtleastOneMatch()
         {
             "test".IsSameAny("hello", "teST").ShouldBeTrue();
+        }
+
+        [Fact]
+        public void IsEndWithTest()
+        {
+            var sut = "Hello world";
+            sut.IsEndWith("WORLD").ShouldBeTrue();
         }
     }
 }

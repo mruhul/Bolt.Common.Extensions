@@ -6,6 +6,25 @@ namespace Bolt.Common.Extensions
 {
     public static class DictionaryExtensions
     {
+        /// <summary>
+        /// Return a new instance of dictionary of supplied source is null otherwise return the source
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static IDictionary<TKey, TValue> NullSafe<TKey, TValue>(this IDictionary<TKey, TValue> source)
+            => source ?? new Dictionary<TKey, TValue>();
+
+        /// <summary>
+        /// Return value based on key if exists otherwise return default TValue. Please note this method
+        /// doesn't check whether the supplied source is null or not.
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
         [DebuggerStepThrough]
         public static TValue TryGetValueOrDefault<TKey, TValue>(this IDictionary<TKey,TValue> source, TKey key)
         {
@@ -13,6 +32,16 @@ namespace Bolt.Common.Extensions
             return source.TryGetValue(key, out result) ? result : default(TValue);
         }
 
+        /// <summary>
+        /// Return value based on key if exists otherwise return the supplied default TValue. Please note this method
+        /// doesn't check whether the supplied source is null or not.
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <typeparam name="TValue"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="key"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
         [DebuggerStepThrough]
         public static TValue TryGetValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> source, TKey key, TValue defaultValue)
         {

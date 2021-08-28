@@ -65,7 +65,7 @@ namespace Bolt.Common.Extensions.UnitTests
         [InlineData("Test", "", true)]
         public void StartsWithIgnoreCaseTest(string input, string startsWithValue, bool expected)
         {
-            var got = input.StartsWithIgnoreCase(startsWithValue);
+            var got = input.IsStartWith(startsWithValue);
             got.ShouldBe(expected);
         }
 
@@ -83,7 +83,7 @@ namespace Bolt.Common.Extensions.UnitTests
         [InlineData("Test", "", true)]
         public void ContainsIgnoreCaseTest(string input, string startsWithValue, bool expected)
         {
-            var got = input.ContainsIgnoreCase(startsWithValue);
+            var got = input.IsContain(startsWithValue);
             got.ShouldBe(expected);
         }
 
@@ -91,7 +91,7 @@ namespace Bolt.Common.Extensions.UnitTests
         [Fact]
         public void EqualsAnyIgnoreCaseReturnFalseWhenAtleastOneMatch()
         {
-            "test".EqualsAnyIgnoreCase("hello", "teST").ShouldBeTrue();
+            "test".IsSameAny("hello", "teST").ShouldBeTrue();
         }
     }
 }

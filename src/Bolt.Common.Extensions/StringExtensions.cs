@@ -70,7 +70,7 @@ namespace Bolt.Common.Extensions
 
 
         /// <summary>
-        /// Compare two string in case insensitive way
+        /// Compare two string in case insensitive way and null safe
         /// </summary>
         /// <param name="source"></param>
         /// <param name="compareWith"></param>
@@ -89,7 +89,7 @@ namespace Bolt.Common.Extensions
         /// <param name="value"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool StartsWithIgnoreCase(this string source, string value)
+        public static bool IsStartWith(this string source, string value)
         {
             if (source == null || value == null) return false;
 
@@ -104,15 +104,22 @@ namespace Bolt.Common.Extensions
         /// <param name="value"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool ContainsIgnoreCase(this string source, string value)
+        public static bool IsContain(this string source, string value)
         {
             if (source == null || value == null) return false;
 
             return source.IndexOf(value, StringComparison.OrdinalIgnoreCase) != -1;
         }
 
+        /// <summary>
+        /// Compare supplied values with the source string in case insensitive way and return true
+        /// when any one of the supplied values are equal to the source string
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="values"></param>
+        /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool EqualsAnyIgnoreCase(this string source, params string[] values)
+        public static bool IsSameAny(this string source, params string[] values)
         {
             if (source == null) return false;
             if (values == null) return false;
@@ -128,6 +135,12 @@ namespace Bolt.Common.Extensions
             return false;
         }
 
+        /// <summary>
+        /// Join collection strings with supplied seperator
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="seperator"></param>
+        /// <returns></returns>
         [DebuggerStepThrough]
         public static string Join(this IEnumerable<string> source, string seperator = ",")
         {

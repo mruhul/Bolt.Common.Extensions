@@ -11,8 +11,7 @@ namespace Bolt.Common.Extensions.UnitTests
         public static void ToUnixTimeSecondsTests()
         {
             var now = DateTime.UtcNow;
-            var dataTimeOffset = new DateTimeOffset(now);
-
+            // Should work it shouldn't take 1 second to execute 2nd line
             now.ToUnixTimeSeconds().ShouldBe(DateTimeOffset.UtcNow.ToUnixTimeSeconds());
         }
 

@@ -8,6 +8,24 @@ namespace Bolt.Common.Extensions.UnitTests
     public static class DateTimeExtensionsTests
     {
         [Fact]
+        public static void ToUnixTimeSecondsTests()
+        {
+            var now = DateTime.UtcNow;
+            var dataTimeOffset = new DateTimeOffset(now);
+
+            now.ToUnixTimeSeconds().ShouldBe(DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+        }
+
+        [Fact]
+        public static void ToUnixTimeMillisecondsTests()
+        {
+            var now = DateTime.UtcNow;
+            var dateTimeOffset = new DateTimeOffset(now);
+
+            now.ToUnixTimeMilliseconds().ShouldBe(dateTimeOffset.ToUnixTimeMilliseconds());
+        }
+
+        [Fact]
         public static void ToDateTimeTests()
         {
             var dateStr = "2015-04-04";

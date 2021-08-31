@@ -147,10 +147,17 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
   ```
 - **FormatAsUtc()** - Format a datetime to utc format `RoundTripKind (o)`. If the supplied datetime kind is not UTC then this function convert the datetime to universal time and then format to stirng
 
+
+
   ```
   var utcDateString = DateTime.UtcNow.FormatAsUtc(); // should print date as format similar to `2021-07-10T12:40:21.3389002Z`
   var localDateString = DateTime.Now.FormatAsUtc(); // should convert the time to Unversal time and then format similar to `2021-07-10T12:40:21.3389002Z`
   ```
+
+- **DateTime.ToUnixTimeSeconds()** - Returns the number of seconds that have elapsed since 1970-01-01T00:00:00Z.
+
+- **DateTime.ToUnixTimeMilliseconds()** - Returns the number of milliseconds that have elapsed since 1970-01-01T00:00:00Z.
+
 
 ## Enumerable
 

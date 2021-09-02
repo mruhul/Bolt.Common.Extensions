@@ -5,6 +5,7 @@ namespace Bolt.Common.Extensions.UnitTests
 {
     public class NullSafeExtensionsTests
     {
+        [Theory]
         [InlineData(null, 0)]
         [InlineData(1, 1)]
         public void NullIntTests(int? source, int expectedValue)
@@ -12,6 +13,8 @@ namespace Bolt.Common.Extensions.UnitTests
             source.NullSafe().ShouldBe(expectedValue);
         }
 
+
+        [Theory]
         [InlineData(null, 1, 1)]
         [InlineData(2, 1, 2)]
         public void ValueOrDefaultTests(int? source, int defaultValue, int expectedValue)
@@ -19,6 +22,7 @@ namespace Bolt.Common.Extensions.UnitTests
             source.NullSafe(defaultValue).ShouldBe(expectedValue);
         }
 
+        [Theory]
         [InlineData(null, false)]
         [InlineData(true, true)]
         [InlineData(false, false)]
@@ -27,6 +31,7 @@ namespace Bolt.Common.Extensions.UnitTests
             source.NullSafe().ShouldBe(expectedValue);
         }
 
+        [Theory]
         [InlineData(null, Color.None)]
         [InlineData(Color.Red, Color.Red)]
         public void NullEnumTests(Color? source, Color expectedValue)

@@ -41,7 +41,7 @@ namespace Bolt.Common.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <returns></returns>
-        public static string ToJson<T>(this T source) where T : class
+        public static string SerializeToJson<T>(this T source) where T : class
             => source == null ? null : JsonSerializer.Serialize(source, options);
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Bolt.Common.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <returns></returns>
-        public static string ToPrettyJson<T>(this T source)
+        public static string SerializeToPrettyJson<T>(this T source)
             => source == null 
                 ? null 
                 : JsonSerializer.Serialize(source, optionsIndented);
@@ -61,7 +61,7 @@ namespace Bolt.Common.Extensions
         /// <typeparam name="T"></typeparam>
         /// <param name="source"></param>
         /// <returns></returns>
-        public static T FromJson<T>(this string source)
+        public static T DeserializeFromJson<T>(this string source)
             => string.IsNullOrWhiteSpace(source) 
                 ? default 
                 : JsonSerializer.Deserialize<T>(source, options);

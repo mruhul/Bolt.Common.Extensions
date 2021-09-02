@@ -17,7 +17,7 @@ namespace Bolt.Common.Extensions.UnitTests
                 CreatedAt = new DateTime(2021, 1, 1, 0, 0, 0, DateTimeKind.Utc)
             };
 
-            var serializedData = person.ToJson();
+            var serializedData = person.SerializeToJson();
 
             serializedData.ShouldMatchApprovedDefault();
         }
@@ -32,7 +32,7 @@ namespace Bolt.Common.Extensions.UnitTests
                 CreatedAt = new DateTime(2021, 1, 1, 0, 0, 0, DateTimeKind.Utc)
             };
 
-            var serializedData = person.ToPrettyJson();
+            var serializedData = person.SerializeToPrettyJson();
 
             serializedData.ShouldMatchApprovedDefault();
         }
@@ -47,9 +47,9 @@ namespace Bolt.Common.Extensions.UnitTests
                 CreatedAt = new DateTime(2021, 1, 1, 0, 0, 0, DateTimeKind.Utc)
             };
 
-            var serializedData = person.ToJson();
+            var serializedData = person.SerializeToJson();
 
-            var result = serializedData.FromJson<Person>();
+            var result = serializedData.DeserializeFromJson<Person>();
 
             result.ShouldSatisfyAllConditions
             (

@@ -18,7 +18,7 @@ namespace Bolt.Common.Extensions
         /// Basic options set for json serializer options
         /// - Add string to enum converter
         /// - PropertyNamingPolicy to CamelCase
-        /// - PropertyNameCaseInsensitive is false
+        /// - PropertyNameCaseInsensitive is true
         /// - Ignore null values
         /// - WriteIndented false
         /// - With JsonStringEnumConverter
@@ -28,7 +28,7 @@ namespace Bolt.Common.Extensions
         public static JsonSerializerOptions ApplyBasicOptions(this JsonSerializerOptions source)
         {
             source.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-            source.PropertyNameCaseInsensitive = false;
+            source.PropertyNameCaseInsensitive = true;
             source.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
             source.WriteIndented = false;
             source.Converters.Add(new JsonStringEnumConverter());

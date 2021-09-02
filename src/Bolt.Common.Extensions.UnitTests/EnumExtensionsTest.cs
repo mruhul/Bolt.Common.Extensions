@@ -16,6 +16,7 @@ namespace Bolt.Common.Extensions.UnitTests
             source.ToEnum<Color>().ShouldBe(expectedResult);
         }
 
+        [Theory]
         [InlineData(null, Color.None)]
         [InlineData(Color.Red, Color.Red)]
         public void NullSafeTest(Color? source, Color expected)

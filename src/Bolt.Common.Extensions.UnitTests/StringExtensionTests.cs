@@ -100,5 +100,11 @@ namespace Bolt.Common.Extensions.UnitTests
             var sut = "Hello world";
             sut.IsEndWith("WORLD").ShouldBeTrue();
         }
+
+        [Theory]
+        [InlineData("", " cups", "")]
+        [InlineData("12", " cups", "12 cups")]
+        public void AppendIfNotEmpty(string source, string ending, string result) =>
+            source.AppendIfNotEmpty(ending).ShouldBe(result);
     }
 }

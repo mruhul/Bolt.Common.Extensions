@@ -2,13 +2,12 @@ name: .NET Core
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
     tags: release-**
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
-         
   build:
     runs-on: ubuntu-latest
 
@@ -18,7 +17,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: "5.0.x"
+          dotnet-version: "6.0.x"
       - name: Install dependencies
         run: dotnet restore ./src/Bolt.Common.Extensions.sln
       - name: Build

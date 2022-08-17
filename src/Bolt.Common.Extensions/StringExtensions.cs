@@ -89,7 +89,7 @@ namespace Bolt.Common.Extensions
         /// <param name="value"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool IsStartWith(this string source, string value)
+        public static bool StartsWithIgnoreCase(this string source, string value)
         {
             if (source == null || value == null) return false;
 
@@ -104,7 +104,7 @@ namespace Bolt.Common.Extensions
         /// <param name="value"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool IsEndWith(this string source, string value)
+        public static bool EndsWithIgnoreCase(this string source, string value)
         {
             if (source == null || value == null) return false;
 
@@ -119,7 +119,7 @@ namespace Bolt.Common.Extensions
         /// <param name="value"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool IsContain(this string source, string value)
+        public static bool ContainsIgnoreCase(this string source, string value)
         {
             if (source == null || value == null) return false;
 

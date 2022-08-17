@@ -86,31 +86,31 @@ grretings.IsSame(name).ShouldBe(false);
   got.ShouldBe(false);
 ```
 
-- **IsStartWith(string value)** - check whether a string starts wtih supplied value in case insensitive way
+- **StartsWithIgnoreCase(string value)** - check whether a string starts wtih supplied value in case insensitive way
 
 ```c-sharp
   // return true as source starts with supplied value
   var sut = "hello world!"
-  var got = sut.IsStartWith("HELLO");
+  var got = sut.StartsWithIgnoreCase("HELLO");
   got.ShouldBe(true);
 
   // return false when source is null
   string sut = null;
-  sut.IsStartWith("s").ShouldBe(false);
+  sut.StartsWithIgnoreCase("s").ShouldBe(false);
 ```
 
-- **IsEndWith(string value)** - Check whether a string ends with supplied value in case insensitive way
+- **EndsWithIgnoreCase(string value)** - Check whether a string ends with supplied value in case insensitive way
 
   ```c-sharp
   var sut = "hello world";
-  sut.IsEndWith("WORLD").ShouldBeTrue();
+  sut.EndsWithIgnoreCase("WORLD").ShouldBeTrue();
   ```
 
-- **IsContain(string value)** - check whether a string contains in source string in case insensitive way
+- **ContainsIgnoreCase(string value)** - check whether a string contains in source string in case insensitive way
 
   ```c-sharp
   var sut = "Hello World!";
-  sut.IsContain("WORLD").ShouldBeTrue();
+  sut.ContainsIgnoreCase("WORLD").ShouldBeTrue();
   ```
 
 - **FormatWith(params object[])** - Format string with arguments
@@ -136,18 +136,18 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
   "2012-04-05".ToDateTime().ShouldBe(new DateTime(2015,04,05));
   "dsfsd".ToDateTime().ShouldBe(null);
   ```
+
 - **ToUtcDateTime()** - Convert a string to UTC datetime. The method assumes the string is formatted as `RoundTripKind (o)`. If the converted datetime not UTC kind then transform to universaltime before return.
 
   ```c-sharp
   var utcDateFromUtcDateString = "2021-07-10T12:40:21.3389002Z".ToUtcDateTime();
   var utcDateFromLocalDateString = "2021-07-10T22:40:21.3389002+10:00".ToUtcDateTime();
-  
+
   utcDateFromUtcDateString.ShouldBe(utcDateFromLocalString);
 
   ```
+
 - **FormatAsUtc()** - Format a datetime to utc format `RoundTripKind (o)`. If the supplied datetime kind is not UTC then this function convert the datetime to universal time and then format to stirng
-
-
 
   ```
   var utcDateString = DateTime.UtcNow.FormatAsUtc(); // should print date as format similar to `2021-07-10T12:40:21.3389002Z`
@@ -157,7 +157,6 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
 - **ToUnixTimeSeconds()** - Returns the number of seconds that have elapsed since 1970-01-01T00:00:00Z.
 
 - **ToUnixTimeMilliseconds()** - Returns the number of milliseconds that have elapsed since 1970-01-01T00:00:00Z.
-
 
 ## Enumerable
 
@@ -278,7 +277,6 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
   source["one"].ShouldBe("1");
   source["two"].ShouldBe("2");
   ```
-
 
 ## Enum
 

@@ -79,7 +79,7 @@ namespace Bolt.Common.Extensions
         /// <param name="value"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool IsContain(this IEnumerable<string> source, string value)
+        public static bool ContainsIgnoreCase(this IEnumerable<string> source, string value)
         {
             if (source == null) return false;
             
@@ -103,7 +103,7 @@ namespace Bolt.Common.Extensions
         /// <param name="values"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool IsContainAny(this IEnumerable<string> source, params string[] values)
+        public static bool ContainsIgnoreCaseAny(this IEnumerable<string> source, params string[] values)
         {
             if (source == null) return false;
 
@@ -130,7 +130,7 @@ namespace Bolt.Common.Extensions
         /// <param name="values"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool IsContainAny(this IEnumerable<string> source, IEnumerable<string> values)
+        public static bool ContainsIgnoreCaseAny(this IEnumerable<string> source, IEnumerable<string> values)
         {
             if (source == null) return false;
 

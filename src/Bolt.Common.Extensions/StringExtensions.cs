@@ -214,5 +214,15 @@ namespace Bolt.Common.Extensions
         {
             return string.Format(source, args);
         }
+        
+        /// <summary>
+        /// Appends an ending to a string if the source string is not empty
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="ending"></param>
+        /// <returns></returns>
+        [DebuggerStepThrough]
+        public static string AppendIfNotEmpty(this string source, string ending) =>
+            source.IsEmpty() ? source : string.Concat(source, ending);
     }
 }

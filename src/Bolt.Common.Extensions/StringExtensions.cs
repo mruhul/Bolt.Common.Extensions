@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
@@ -15,7 +16,7 @@ namespace Bolt.Common.Extensions
         /// <param name="source"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static string NullSafe(this string source)
+        public static string NullSafe(this string? source)
         {
             return source ?? string.Empty;
         }
@@ -27,7 +28,7 @@ namespace Bolt.Common.Extensions
         /// <param name="defaultValue"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static string NullSafe(this string source, string defaultValue)
+        public static string NullSafe(this string? source, string defaultValue)
         {
             return source ?? defaultValue;
         }
@@ -40,7 +41,7 @@ namespace Bolt.Common.Extensions
         /// <param name="defaultValue"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static string EmptyAlternative(this string source, string defaultValue)
+        public static string EmptyAlternative(this string? source, string defaultValue)
         {
             return string.IsNullOrWhiteSpace(source) ? defaultValue : source;
         }
@@ -52,7 +53,7 @@ namespace Bolt.Common.Extensions
         /// <param name="source"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool IsEmpty(this string source)
+        public static bool IsEmpty(this string? source)
         {
             return string.IsNullOrWhiteSpace(source);
         }
@@ -63,7 +64,7 @@ namespace Bolt.Common.Extensions
         /// <param name="source"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool HasValue(this string source)
+        public static bool HasValue(this string? source)
         {
             return !string.IsNullOrWhiteSpace(source);
         }
@@ -76,7 +77,7 @@ namespace Bolt.Common.Extensions
         /// <param name="compareWith"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool IsSame(this string source, string compareWith)
+        public static bool IsSame(this string? source, string? compareWith)
         {
             return string.Equals(source, compareWith, StringComparison.OrdinalIgnoreCase);
         }
@@ -89,7 +90,7 @@ namespace Bolt.Common.Extensions
         /// <param name="value"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool StartsWithIgnoreCase(this string source, string value)
+        public static bool StartsWithIgnoreCase(this string? source, string value)
         {
             if (source == null || value == null) return false;
 
@@ -104,7 +105,7 @@ namespace Bolt.Common.Extensions
         /// <param name="value"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool EndsWithIgnoreCase(this string source, string value)
+        public static bool EndsWithIgnoreCase(this string? source, string? value)
         {
             if (source == null || value == null) return false;
 
@@ -119,7 +120,7 @@ namespace Bolt.Common.Extensions
         /// <param name="value"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool ContainsIgnoreCase(this string source, string value)
+        public static bool ContainsIgnoreCase(this string? source, string? value)
         {
             if (source == null || value == null) return false;
 
@@ -134,7 +135,7 @@ namespace Bolt.Common.Extensions
         /// <param name="values"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool IsSameAny(this string source, params string[] values)
+        public static bool IsSameAny(this string? source, params string[]? values)
         {
             if (source == null) return false;
             if (values == null) return false;
@@ -158,7 +159,7 @@ namespace Bolt.Common.Extensions
         /// <param name="values"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool IsSameAny(this string source, IEnumerable<string> values)
+        public static bool IsSameAny(this string? source, IEnumerable<string>? values)
         {
             if (source == null) return false;
             if (values == null) return false;
@@ -181,8 +182,9 @@ namespace Bolt.Common.Extensions
         /// <param name="seperator"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static string Join(this IEnumerable<string> source, string seperator = ",")
+        public static string Join(this IEnumerable<string>? source, string seperator = ",")
         {
+            if (source == null) return string.Empty;
             return string.Join(seperator, source);
         }
 
@@ -204,14 +206,17 @@ namespace Bolt.Common.Extensions
         }
 
         [DebuggerStepThrough]
-        public static string ToSlug(this string source, int max = 80, bool keepCaseAsIs = false)
+        public static string ToSlug(this string? source, int max = 80, bool keepCaseAsIs = false)
         {
+            if(source == null) return string.Empty;
+
             return SlugCreator.Create(source, max, toLower: !keepCaseAsIs);
         }
 
         [DebuggerStepThrough]
-        public static string FormatWith(this string source, params object[] args)
+        public static string FormatWith(this string? source, params object[] args)
         {
+            if (source == null) return string.Empty;
             return string.Format(source, args);
         }
     }

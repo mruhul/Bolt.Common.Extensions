@@ -1,7 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>    
-    <TargetFramework>net6.0</TargetFramework>
+	  <TargetFramework>net7.0</TargetFramework>
+	  <ImplicitUsings>enable</ImplicitUsings>
+	  <LangVersion>11.0</LangVersion>
+	  <NoWarn>$(NoWarn);1591</NoWarn>
+	  <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

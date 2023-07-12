@@ -1,13 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <Description>Common useful extensions</Description>
-    <Version>5.0.0</Version>
-    <Authors>Mohammad Ruhul Amin</Authors>
-    <AssemblyName>Bolt.Common.Extensions</AssemblyName>
-    <PackageId>Bolt.Common.Extensions</PackageId>
-    <TargetFramework>net6.0</TargetFramework>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-  </PropertyGroup>
+	<PropertyGroup>
+		<Description>Common useful extensions</Description>
+		<Version>5.0.1</Version>
+		<Authors>Mohammad Ruhul Amin</Authors>
+		<AssemblyName>Bolt.Common.Extensions</AssemblyName>
+		<PackageId>Bolt.Common.Extensions</PackageId>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Nullable>enable</Nullable>
+
+
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<LangVersion>11.0</LangVersion>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+	</PropertyGroup>
 
 </Project>

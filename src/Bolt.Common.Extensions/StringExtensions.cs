@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -16,6 +17,7 @@ namespace Bolt.Common.Extensions
         /// <param name="source"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
+        [return: NotNull]
         public static string NullSafe(this string? source)
         {
             return source ?? string.Empty;
@@ -28,6 +30,7 @@ namespace Bolt.Common.Extensions
         /// <param name="defaultValue"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
+        [return: NotNull]
         public static string NullSafe(this string? source, string defaultValue)
         {
             return source ?? defaultValue;
@@ -53,7 +56,7 @@ namespace Bolt.Common.Extensions
         /// <param name="source"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool IsEmpty(this string? source)
+        public static bool IsEmpty([NotNullWhen(false)] this string? source)
         {
             return string.IsNullOrWhiteSpace(source);
         }
@@ -64,7 +67,7 @@ namespace Bolt.Common.Extensions
         /// <param name="source"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool HasValue(this string? source)
+        public static bool HasValue([NotNullWhen(true)] this string? source)
         {
             return !string.IsNullOrWhiteSpace(source);
         }

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
 using System.Reflection;
 
 namespace Bolt.Common.Extensions
@@ -222,5 +218,11 @@ namespace Bolt.Common.Extensions
             if (source == null) return string.Empty;
             return string.Format(source, args);
         }
+
+        [DebuggerStepThrough]
+        public static Guid? ToGuid(this string? source)
+        {
+            return Guid.TryParse(source, out var result) ? result : null;
+        }        
     }
 }

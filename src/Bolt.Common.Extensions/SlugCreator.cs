@@ -68,9 +68,9 @@ namespace Bolt.Common.Extensions
             return sb.ToString();
         }
  
-        static string ConvertEdgeCases(char c, bool toLower)
+        static string? ConvertEdgeCases(char c, bool toLower)
         {
-            string swap = null;
+            string? swap = null;
             switch (c)
             {
                 case 'ı':

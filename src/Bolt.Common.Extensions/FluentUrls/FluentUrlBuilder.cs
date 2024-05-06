@@ -48,27 +48,27 @@ namespace Bolt.Common.Extensions.FluentUrls
 
     internal sealed class FluentUrlBuilder : IHaveUrl, IHavePath, IHaveQueryParams, IBuildUrl
     {
-        private string url;
-        private List<string> paths;
-        private Dictionary<string, string> queryParams;
+        private readonly string _url;
+        private List<string>? _paths;
+        private Dictionary<string, string>? _queryParams;
 
 
         public FluentUrlBuilder(string url, bool assumeUrlQueryParamsEncoded)
         {
             if (string.IsNullOrWhiteSpace(url))
             {
-                this.url = string.Empty;
+                _url = string.Empty;
                 return;
             }
 
             var urlParts = url.Split(Qs);
 
-            this.url = urlParts[0];
+            _url = urlParts[0];
 
             AppendQueryParamsFromUrlQueryPart(urlParts.Length > 1 ? urlParts[1] : string.Empty, assumeUrlQueryParamsEncoded);
         }
 
-        private void AppendQueryParamsFromUrlQueryPart(string queryPart, bool assumeUrlQueryParamsEncoded)
+        private void AppendQueryParamsFromUrlQueryPart(string? queryPart, bool assumeUrlQueryParamsEncoded)
         {
             if (string.IsNullOrWhiteSpace(queryPart)) return;
 
@@ -86,9 +86,9 @@ namespace Bolt.Common.Extensions.FluentUrls
         {
             if (string.IsNullOrEmpty(path)) return this;
 
-            if (paths == null) paths = new List<string>();
+            if (_paths == null) _paths = new List<string>();
 
-            paths.Add(path);
+            _paths.Add(path);
 
             return this;
         }
@@ -98,12 +98,12 @@ namespace Bolt.Common.Extensions.FluentUrls
             return AddQueryParam(name, value, encoded: false);
         }
 
-        public IHaveQueryParams Query(Dictionary<string, string> values)
+        public IHaveQueryParams Query(Dictionary<string, string>? values)
         {
             return AddQueryParams(values, encoded: false);
         }
 
-        public IHaveQueryParams QueryEncoded(string name, string value)
+        public IHaveQueryParams QueryEncoded(string name, string? value)
         {
             return AddQueryParam(name, value, encoded: true);
         }
@@ -113,29 +113,29 @@ namespace Bolt.Common.Extensions.FluentUrls
             return AddQueryParams(values, encoded: true);
         }
 
-        private IHaveQueryParams AddQueryParams(Dictionary<string, string> values, bool encoded)
+        private IHaveQueryParams AddQueryParams(Dictionary<string, string>? values, bool encoded)
         {
             if (values == null) return this;
 
-            if (queryParams == null) queryParams = new Dictionary<string, string>();
+            if (_queryParams == null) _queryParams = new Dictionary<string, string>();
 
             foreach (var keyValue in values)
             {
-                if (keyValue.Value == null || string.IsNullOrWhiteSpace(keyValue.Key)) continue;
+                if (string.IsNullOrWhiteSpace(keyValue.Value) || string.IsNullOrWhiteSpace(keyValue.Key)) continue;
 
-                queryParams[keyValue.Key] = encoded ? keyValue.Value : Uri.UnescapeDataString(keyValue.Value);
+                _queryParams[keyValue.Key] = encoded ? keyValue.Value : Uri.UnescapeDataString(keyValue.Value);
             }
 
             return this;
         }
 
-        private IHaveQueryParams AddQueryParam(string name, string value, bool encoded)
+        private IHaveQueryParams AddQueryParam(string name, string? value, bool encoded)
         {
             if (value == null || string.IsNullOrWhiteSpace(name)) return this;
 
-            if (queryParams == null) queryParams = new Dictionary<string, string>();
+            if (_queryParams == null) _queryParams = new Dictionary<string, string>();
 
-            queryParams[name] = encoded ? value : Uri.EscapeDataString(value);
+            _queryParams[name] = encoded ? value : Uri.EscapeDataString(value);
 
             return this;
         }
@@ -146,37 +146,37 @@ namespace Bolt.Common.Extensions.FluentUrls
         private const char Eq = '=';
         public string Build(bool assumeUrlQueryParamsEncoded = false)
         {
-            var sb = new StringBuilder(url);
+            var sb = new StringBuilder(_url);
 
-            if (paths != null && paths.Count > 0)
+            if (_paths != null && _paths.Count > 0)
             {
-                var urlHasSlash = url.EndsWith(Slash);
+                var urlHasSlash = _url.EndsWith(Slash);
 
                 if (urlHasSlash is false) sb.Append(Slash);
 
-                for (var i = 0; i < paths.Count; i++)
+                for (var i = 0; i < _paths.Count; i++)
                 {
-                    var path = paths[i];
+                    var path = _paths[i];
 
                     sb.Append(path.Trim(Slash));
 
-                    if (i < paths.Count - 1) sb.Append(Slash);
+                    if (i < _paths.Count - 1) sb.Append(Slash);
                 }
 
-                var isLastItemHasSlash = paths[paths.Count - 1].EndsWith(Slash);
+                var isLastItemHasSlash = _paths[_paths.Count - 1].EndsWith(Slash);
 
                 if (urlHasSlash || isLastItemHasSlash) sb.Append(Slash);
             }
 
-            if (queryParams != null && queryParams.Count > 0)
+            if (_queryParams != null && _queryParams.Count > 0)
             {
                 sb.Append(Qs);
                 var index = 0;
-                foreach (var keyValue in queryParams)
+                foreach (var keyValue in _queryParams)
                 {
                     sb.Append(keyValue.Key).Append(Eq).Append(keyValue.Value);
 
-                    if (index < queryParams.Count - 1) sb.Append(Amp);
+                    if (index < _queryParams.Count - 1) sb.Append(Amp);
 
                     index++;
                 }
@@ -209,9 +209,9 @@ namespace Bolt.Common.Extensions.FluentUrls
         {
             if (paths == null || paths.Length == 0) return this;
 
-            if (this.paths == null) this.paths = new List<string>();
+            if (this._paths == null) this._paths = new List<string>();
 
-            this.paths.AddRange(paths);
+            this._paths.AddRange(paths);
 
             return this;
         }
@@ -220,9 +220,9 @@ namespace Bolt.Common.Extensions.FluentUrls
         {
             if (paths == null || paths.Any() is false) return this;
 
-            if (this.paths == null) this.paths = new List<string>();
+            if (this._paths == null) this._paths = new List<string>();
 
-            this.paths.AddRange(paths);
+            this._paths.AddRange(paths);
 
             return this;
         }

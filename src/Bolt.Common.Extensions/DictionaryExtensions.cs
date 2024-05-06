@@ -13,7 +13,7 @@ namespace Bolt.Common.Extensions
         /// <typeparam name="TValue"></typeparam>
         /// <param name="source"></param>
         /// <returns></returns>
-        public static IDictionary<TKey, TValue> NullSafe<TKey, TValue>(this IDictionary<TKey, TValue> source)
+        public static IDictionary<TKey, TValue> NullSafe<TKey, TValue>(this IDictionary<TKey, TValue>? source) where TKey : notnull 
             => source ?? new Dictionary<TKey, TValue>();
 
         /// <summary>
@@ -26,10 +26,9 @@ namespace Bolt.Common.Extensions
         /// <param name="key"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static TValue TryGetValueOrDefault<TKey, TValue>(this IDictionary<TKey,TValue> source, TKey key)
+        public static TValue? TryGetValueOrDefault<TKey, TValue>(this IDictionary<TKey,TValue> source, TKey key)
         {
-            TValue result;
-            return source.TryGetValue(key, out result) ? result : default(TValue);
+            return source.TryGetValue(key, out var result) ? result : default;
         }
 
         /// <summary>
@@ -45,8 +44,7 @@ namespace Bolt.Common.Extensions
         [DebuggerStepThrough]
         public static TValue TryGetValueOrDefault<TKey, TValue>(this IDictionary<TKey, TValue> source, TKey key, TValue defaultValue)
         {
-            TValue result;
-            return source.TryGetValue(key, out result) ? result : defaultValue;
+            return source.TryGetValue(key, out var result) ? result : defaultValue;
         }
 
         /// <summary>
@@ -59,9 +57,9 @@ namespace Bolt.Common.Extensions
         /// <param name="ignoreWhenAlreadyExists"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static IDictionary<TKey, TValue> Merge<TKey, TValue>(this IDictionary<TKey, TValue> source, 
-            IDictionary<TKey,TValue> mergeWith,
-            bool ignoreWhenAlreadyExists = false)
+        public static IDictionary<TKey, TValue>? Merge<TKey, TValue>(this IDictionary<TKey, TValue>? source, 
+            IDictionary<TKey,TValue>? mergeWith,
+            bool ignoreWhenAlreadyExists = false) where TKey : notnull
         {
             if (source == null) return mergeWith;
             if (mergeWith == null) return source;

@@ -33,7 +33,7 @@ namespace Bolt.Common.Extensions
             return (Int64)source.ToUniversalTime().Subtract(UnixBaseTime).TotalMilliseconds;
         }
 
-        public static DateTime? ToDateTime(this string source, string format = null, DateTimeStyles styles = DateTimeStyles.None)
+        public static DateTime? ToDateTime(this string source, string? format = null, DateTimeStyles styles = DateTimeStyles.None)
         {
             DateTime result;
 
@@ -72,7 +72,7 @@ namespace Bolt.Common.Extensions
         /// </summary>
         /// <param name="source"></param>
         /// <returns></returns>
-        public static string FormatAsUtc(this DateTime? source)
+        public static string? FormatAsUtc(this DateTime? source)
             => source.HasValue 
                 ? source.Value.Kind == DateTimeKind.Utc 
                     ? source.Value.ToString(UtcFormat)

@@ -93,7 +93,7 @@ namespace Bolt.Common.Extensions
         /// <param name="value"></param>
         /// <returns></returns>
         [DebuggerStepThrough]
-        public static bool StartsWithIgnoreCase(this string? source, string value)
+        public static bool StartsWithIgnoreCase(this string? source, string? value)
         {
             if (source == null || value == null) return false;
 

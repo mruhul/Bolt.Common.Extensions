@@ -7,8 +7,7 @@ namespace Bolt.Common.Extensions
         [DebuggerStepThrough]
         public static bool? ToBoolean(this string source)
         {
-            bool result;
-            return bool.TryParse(source, out result) ? result : (bool?)null;
+            return bool.TryParse(source, out var result) ? result : null;
         }
 
         [DebuggerStepThrough]

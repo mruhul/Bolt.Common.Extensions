@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<Description>Common useful extensions</Description>
-		<Version>5.0.3</Version>
+		<Version>5.0.4</Version>
 		<Authors>Mohammad Ruhul Amin</Authors>
 		<AssemblyName>Bolt.Common.Extensions</AssemblyName>
 		<PackageId>Bolt.Common.Extensions</PackageId>
@@ -10,7 +10,7 @@
 		<Nullable>enable</Nullable>
 
 
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFrameworks>net8.0,net7.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<LangVersion>11.0</LangVersion>
 		<NoWarn>$(NoWarn);1591</NoWarn>

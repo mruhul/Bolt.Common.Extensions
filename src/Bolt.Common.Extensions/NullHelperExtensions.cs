@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 
 namespace Bolt.Common.Extensions
 {
@@ -20,21 +17,19 @@ namespace Bolt.Common.Extensions
         }
 
         [DebuggerStepThrough]
-        public static IEnumerable<T> NullSafe<T>(this IEnumerable<T> source)
+        public static IEnumerable<T> NullSafe<T>(this IEnumerable<T>? source)
         {
             return source ?? Enumerable.Empty<T>();
         }
 
         [DebuggerStepThrough]
-        public static TOutput NullSafeGet<TInput, TOutput>(this TInput input, Func<TInput, TOutput> func)
+        public static TOutput? NullSafeGet<TInput, TOutput>(this TInput? input, Func<TInput, TOutput?> func)
         {
-            if (input == null) return default(TOutput);
-
-            return func.Invoke(input);
+            return input == null ? default : func.Invoke(input);
         }
 
         [DebuggerStepThrough]
-        public static TInput NullSafeDo<TInput>(this TInput input, Action<TInput> func)
+        public static TInput? NullSafeDo<TInput>(this TInput? input, Action<TInput> func)
         {
             if (input != null)
             {

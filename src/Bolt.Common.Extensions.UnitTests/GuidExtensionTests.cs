@@ -1,45 +1,45 @@
+using Shouldly;
 using Xunit;
 
-namespace Bolt.Common.Extensions.UnitTests
+namespace Bolt.Common.Extensions.UnitTests;
+
+public class GuidExtensionTests
 {
-    public class GuidExtensionTests
+    [Fact]
+    public void IsEmpty_ShouldReturnTrue_WhenEmpty()
     {
-        [Fact]
-        public void IsEmpty_ShouldReturnTrue_WhenEmpty()
-        {
-            Assert.True(Guid.Empty.IsEmpty());
-        }
-
-        [Fact]
-        public void IsEmpty_ShouldReturnTrue_WhenNull()
-        {
-            Guid? nullableGuid = null;
-            Assert.True(nullableGuid.IsEmpty());
-        }
-
-        [Fact]
-        public void IsEmpty_ShouldReturnFalse()
-        {
-            Assert.False(Guid.NewGuid().IsEmpty());
-        }
-
-        [Fact]
-        public void HasValue_ShouldReturnTrue()
-        {
-            Assert.True(Guid.NewGuid().HasValue());
-        }
-
-        [Fact]
-        public void HasValue_ShouldReturnFalse_WhenEmpty()
-        {
-            Assert.False(Guid.Empty.HasValue());
-        }
-
-        [Fact]
-        public void HasValue_ShouldReturnFalse_WhenNull()
-        {
-            Guid? nullableGuid = null;
-            Assert.False(nullableGuid.HasValue());
-        }
+        Guid.Empty.IsEmpty().ShouldBeTrue();
     }
+
+    [Fact]
+    public void IsEmpty_ShouldReturnTrue_WhenNull()
+    {
+        NullGuid().IsEmpty().ShouldBeTrue();
+    }
+
+    [Fact]
+    public void IsEmpty_ShouldReturnFalse()
+    {
+        Guid.NewGuid().IsEmpty().ShouldBeFalse();
+    }
+
+    [Fact]
+    public void HasValue_ShouldReturnTrue()
+    {
+        Guid.NewGuid().HasValue().ShouldBeTrue();
+    }
+
+    [Fact]
+    public void HasValue_ShouldReturnFalse_WhenEmpty()
+    {
+        Guid.Empty.HasValue().ShouldBeFalse();
+    }
+
+    [Fact]
+    public void HasValue_ShouldReturnFalse_WhenNull()
+    {
+        NullGuid().HasValue().ShouldBeFalse();
+    }
+
+    private Guid? NullGuid() => null;
 }

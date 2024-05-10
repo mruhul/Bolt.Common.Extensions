@@ -1,5 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Bolt.Common.Extensions
 {
@@ -12,13 +12,13 @@ namespace Bolt.Common.Extensions
         }
 
         [DebuggerStepThrough]
-        public static bool IsEmpty(this Guid? source)
+        public static bool IsEmpty([NotNullWhen(false)]this Guid? source)
         {
             return source == null || source.Value == Guid.Empty;
         }
 
         [DebuggerStepThrough]
-        public static bool HasValue(this Guid? source)
+        public static bool HasValue([NotNullWhen(true)]this Guid? source)
         {
             return source != null && source.Value != Guid.Empty;
         }

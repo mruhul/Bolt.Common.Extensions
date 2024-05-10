@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<Description>Common useful extensions</Description>
-		<Version>5.0.5</Version>
+		<Version>5.0.6</Version>
 		<Authors>Mohammad Ruhul Amin</Authors>
 		<AssemblyName>Bolt.Common.Extensions</AssemblyName>
 		<PackageId>Bolt.Common.Extensions</PackageId>

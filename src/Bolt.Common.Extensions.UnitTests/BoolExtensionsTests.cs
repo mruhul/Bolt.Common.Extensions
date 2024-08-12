@@ -14,7 +14,7 @@ public class BoolExtensionsTests
     [InlineData("When source is string as True", "true", true)]
     [InlineData("When source is string as false", "false", false)]
     [InlineData("When source is string as False", "False", false)]
-    public void ToBooleanReturnCorrectResult(string scenario, string? given, bool? expected)
+    public void ToBooleanReturnCorrectResult(string scenario, string given, bool? expected)
     {
         given.ToBoolean().ShouldBe(expected, scenario);
     }

@@ -128,6 +128,14 @@ greetingsTemplate.FormatWith("World").ShouldBe("Hello World!");
 
 Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in-dotnet-aka-unicode-to-ascii-aka-diacritic-stripping/
 
+- **Truncate(int, string?)** - Truncate a string to the specified length and optionally adds a suffix
+
+```csharp
+"Hello world".Truncate(4,'...').ShouldBe('Hell...');
+"Hello".Truncate(50, ' read more... ').ShouldBe("Hello");
+"Hello world".Truncate(4).ShouldBe("Hell");
+```
+
 ## DateTime
 
 - **ToDateTime()** - Convert a string to nullable datetime

@@ -100,5 +100,21 @@ namespace Bolt.Common.Extensions.UnitTests
             var sut = "Hello world";
             sut.EndsWithIgnoreCase("WORLD").ShouldBeTrue();
         }
+
+        [Theory]
+        [InlineData(null, 10, null, null)]
+        [InlineData(null, 0, null, null)]
+        [InlineData(null, 0, "...", null)]
+        [InlineData("", 10, null, "")]
+        [InlineData("", 0, null, "")]
+        [InlineData("", 0, "...", "")]
+        [InlineData("test", 5, null, "test")]
+        [InlineData("test", 2, null, "te")]
+        [InlineData("test", 2, "...", "te...")]
+        public void TruncateTest(string sut, int maxLength, string postFix, string expected)
+        {
+            var got = sut.Truncate(maxLength, postFix);
+            got.ShouldBe(expected);
+        }
     }
 }

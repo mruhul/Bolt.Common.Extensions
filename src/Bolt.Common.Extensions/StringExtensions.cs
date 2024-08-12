@@ -222,5 +222,31 @@ namespace Bolt.Common.Extensions
             if (source == null) return string.Empty;
             return string.Format(source, args);
         }
+
+        /// <summary>
+        /// Truncate a string to the specified length and optionally adds a suffix
+        /// </summary>
+        /// <param name="value">The string to be truncated.</param>
+        /// <param name="max">The maximum length of the truncated string.</param>
+        /// <param name="suffix">The suffix to add if the string is truncated (e.g., "...").</param>
+        /// <returns>The truncated string with an optional suffix.</returns>
+        [return: NotNullIfNotNull(nameof(value))]
+        public static string? Truncate(this string? value, int max, string? suffix = null)
+        {
+            if (value == null) return value;
+
+            if (value.Length == 0 || max == 0) return value;
+            
+            if (max >= value.Length) return value;
+            
+            var truncated = value.Substring(0, max);
+            
+            if (suffix != null)
+            {
+                truncated = $"{truncated}{suffix}";
+            }
+
+            return truncated;
+        }
     }
 }

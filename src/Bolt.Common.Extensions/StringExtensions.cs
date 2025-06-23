@@ -248,5 +248,15 @@ namespace Bolt.Common.Extensions
 
             return truncated;
         }
+
+        /// <summary>
+        /// Convert an empty string to null
+        /// </summary>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static string? EmptyToNull(this string? source)
+        {
+            return string.IsNullOrWhiteSpace(source) ? null : source;
+        }
     }
 }

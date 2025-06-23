@@ -146,4 +146,45 @@ public static class EnumerableExtensions
 
         return false;
     }
+    
+    
+
+
+    /// <summary>
+    /// Join array of strings using separator but exclude any empty or null values
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="separator"></param>
+    /// <returns></returns>
+    [return: NotNullIfNotNull(nameof(source))]
+    public static string? JoinNonEmptyValues(this IEnumerable<string>? source, string? separator)
+    {
+        if (source == null) return null;
+
+        return string.Join(separator, GetNonEmptyValues(source));
+    }
+    
+    /// <summary>
+    /// Join array of strings using separator but exclude any empty or null values
+    /// </summary>
+    /// <param name="source"></param>
+    /// <param name="separator"></param>
+    /// <returns></returns>
+    [return: NotNullIfNotNull(nameof(source))]
+    public static string? JoinNonEmptyValues(this IEnumerable<string>? source, char separator)
+    {
+        if (source == null) return null;
+
+        return string.Join(separator, GetNonEmptyValues(source));
+    }
+
+    private static IEnumerable<string> GetNonEmptyValues(IEnumerable<string> source)
+    {
+        foreach (var item in source)
+        {
+            if(string.IsNullOrWhiteSpace(item)) continue;
+
+            yield return item;
+        }
+    }
 }

@@ -116,5 +116,18 @@ namespace Bolt.Common.Extensions.UnitTests
             var got = sut.Truncate(maxLength, postFix);
             got.ShouldBe(expected);
         }
+
+
+        [Theory]
+        [InlineData(null, "", null)]
+        [InlineData(new[]{"test"}, "", "test")]
+        [InlineData(new[]{"test", null}, ", ", "test")]
+        [InlineData(new[]{"first", null, "", "last"}, ",", "first,last")]
+        [InlineData(new String[]{}, ",", "")]
+        public void JoinNonEmptyValuesTests(IEnumerable<string> source, string separator, string expected)
+        {
+            var got = source.JoinNonEmptyValues(separator);
+            got.ShouldBe(expected);
+        }
     }
 }

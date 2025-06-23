@@ -217,6 +217,15 @@ Based on this resource: http://www.danharman.net/2011/07/18/seo-slugification-in
   colors.Join(",").ShouldBe("Red,Green,Blue");
 ```
 
+
+- **JoinNonEmptyValues(IEnumerable&lt;string&gt;?, string?)** - Truncate a string to the specified length and optionally adds a suffix
+
+```csharp
+["First", null, "", "Last".JoinNonEmptyValues(",").ShouldBe("First,Last");
+["First", null, "", "Last".JoinNonEmptyValues(',').ShouldBe("First,Last");
+["First", null, "", "Last".JoinNonEmptyValues().ShouldBe("FirstLast");
+```
+
 - **Append&lt;T&gt;(params T[] items)** - add items at end of enumerable
 
 ```c-sharp

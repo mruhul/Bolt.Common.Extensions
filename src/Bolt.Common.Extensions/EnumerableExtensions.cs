@@ -157,7 +157,7 @@ public static class EnumerableExtensions
     /// <param name="separator"></param>
     /// <returns></returns>
     [return: NotNullIfNotNull(nameof(source))]
-    public static string? JoinNonEmptyValues(this IEnumerable<string>? source, string? separator)
+    public static string? JoinNonEmptyValues(this IEnumerable<string?>? source, string? separator)
     {
         if (source == null) return null;
 
@@ -178,7 +178,7 @@ public static class EnumerableExtensions
         return string.Join(separator, GetNonEmptyValues(source));
     }
 
-    private static IEnumerable<string> GetNonEmptyValues(IEnumerable<string> source)
+    private static IEnumerable<string> GetNonEmptyValues(IEnumerable<string?> source)
     {
         foreach (var item in source)
         {

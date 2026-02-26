@@ -40,6 +40,6 @@ public class GuidExtensionTests
     {
         NullGuid().HasValue().ShouldBeFalse();
     }
-
+    
     private Guid? NullGuid() => null;
 }

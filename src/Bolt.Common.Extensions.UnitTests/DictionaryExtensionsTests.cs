@@ -34,7 +34,7 @@ namespace Bolt.Common.Extensions.UnitTests
 
             var result = baseStore.Merge(newStore);
 
-            result.Count.ShouldBe(4);
+            result!.Count.ShouldBe(4);
             result["one"].ShouldBe("1");
             result["two"].ShouldBe("-2-");
             result["three"].ShouldBe("3");

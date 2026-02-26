@@ -4,7 +4,7 @@ namespace Bolt.Common.Extensions.UnitTests.Infra
 {
     public static class ShouldExtensions
     {
-        public static void ShouldMatchApprovedDefault(this string source, string discriminator = null)
+        public static void ShouldMatchApprovedDefault(this string source, string? discriminator = null)
         {
             source.ShouldMatchApproved(c =>
             {

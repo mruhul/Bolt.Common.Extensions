@@ -34,5 +34,35 @@ namespace Bolt.Common.Extensions
         {
             return source != Guid.Empty;
         }
+
+#if NET10_0
+
+        [DebuggerStepThrough]
+        public static DateTimeOffset? TryExtractDateTime(this Guid? source)
+        {
+            if (source is null)
+                return null;
+
+            var guid = source.Value;
+
+            if (guid.Version != 7)
+                return null;
+
+            Span<byte> bytes = stackalloc byte[16];
+
+            // RFC 4122 byte order (big-endian)
+            guid.TryWriteBytes(bytes, bigEndian: true, out _);
+
+            long timestamp =
+                ((long)bytes[0] << 40) |
+                ((long)bytes[1] << 32) |
+                ((long)bytes[2] << 24) |
+                ((long)bytes[3] << 16) |
+                ((long)bytes[4] << 8)  |
+                bytes[5];
+
+            return DateTimeOffset.FromUnixTimeMilliseconds(timestamp);
+        }
+#endif
     }
 }

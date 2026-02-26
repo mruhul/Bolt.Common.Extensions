@@ -9,7 +9,7 @@ public class EnumerableExtensionsTests
     [Fact]
     public void IsEmptyReturnsTrueWhenNull()
     {
-        IEnumerable<string> collection = null;
+        IEnumerable<string>? collection = null;
 
         collection.IsEmpty().ShouldBe(true);
     }
@@ -17,7 +17,7 @@ public class EnumerableExtensionsTests
     [Fact]
     public void IsEmptyReturnsTrueWhenEmpty()
     {
-        var collection = new List<string>();
+        List<string> collection = [];
 
         collection.IsEmpty().ShouldBe(true);
     }
@@ -34,7 +34,7 @@ public class EnumerableExtensionsTests
     [Fact]
     public void HasItemReturnsFalseWhenNull()
     {
-        IEnumerable<string> collection = null;
+        IEnumerable<string>? collection = null;
 
         collection.HasItem().ShouldBe(false);
     }

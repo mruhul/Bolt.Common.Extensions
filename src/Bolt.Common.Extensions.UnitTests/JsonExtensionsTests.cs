@@ -19,7 +19,7 @@ namespace Bolt.Common.Extensions.UnitTests
 
             var serializedData = person.SerializeToJson();
 
-            serializedData.ShouldMatchApprovedDefault();
+            serializedData!.ShouldMatchApprovedDefault();
         }
 
         [Fact]
@@ -34,7 +34,7 @@ namespace Bolt.Common.Extensions.UnitTests
 
             var serializedData = person.SerializeToPrettyJson();
 
-            serializedData.ShouldMatchApprovedDefault();
+            serializedData!.ShouldMatchApprovedDefault();
         }
 
         [Fact]
@@ -53,16 +53,16 @@ namespace Bolt.Common.Extensions.UnitTests
 
             result.ShouldSatisfyAllConditions
             (
-                () => result.Name.ShouldBe(person.Name),
-                () => result.Age.ShouldBe(person.Age),
-                () => result.CreatedAt.ShouldBe(person.CreatedAt)
+                () => result!.Name.ShouldBe(person.Name),
+                () => result!.Age.ShouldBe(person.Age),
+                () => result!.CreatedAt.ShouldBe(person.CreatedAt)
             );
         }
     }
 
     public record Person
     {
-        public string Name { get; init; }
+        public string Name { get; init; } = string.Empty;
         public int Age { get; init; }
         public DateTime CreatedAt { get; init; }
     }

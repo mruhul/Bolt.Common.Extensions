@@ -1,6 +1,5 @@
 using Xunit;
 using Shouldly;
-using System.Collections.Generic;
 
 namespace Bolt.Common.Extensions.UnitTests
 {

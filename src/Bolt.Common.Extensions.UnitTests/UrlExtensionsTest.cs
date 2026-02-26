@@ -37,8 +37,8 @@ namespace Bolt.Common.Extensions.UnitTests
                 new UrlBuilderTestDto
                 {
                     GivenUrl = "/",
-                    GivenPaths = null,
-                    GivenQueryParams = null,
+                    GivenPaths = null!,
+                    GivenQueryParams = null!,
                     Expected = "/",
                     Scenario = "When all empty"
                 }
@@ -47,8 +47,8 @@ namespace Bolt.Common.Extensions.UnitTests
                 new UrlBuilderTestDto
                 {
                     GivenUrl = "https://hello-world",
-                    GivenPaths = null,
-                    GivenQueryParams = null,
+                    GivenPaths = null!,
+                    GivenQueryParams = null!,
                     Expected = "https://hello-world",
                     Scenario = "When all empty for full url"
                 }
@@ -57,8 +57,8 @@ namespace Bolt.Common.Extensions.UnitTests
                 new UrlBuilderTestDto
                 {
                     GivenUrl = "/test/",
-                    GivenPaths = new List<string>{"/part1"},
-                    GivenQueryParams = null,
+                    GivenPaths = ["/part1"],
+                    GivenQueryParams = null!,
                     Expected = "/test/part1/",
                     Scenario = "When path provided"
                 }
@@ -67,8 +67,8 @@ namespace Bolt.Common.Extensions.UnitTests
                 new UrlBuilderTestDto
                 {
                     GivenUrl = "/test",
-                    GivenPaths = new List<string>{"/part1/"},
-                    GivenQueryParams = null,
+                    GivenPaths = ["/part1/"],
+                    GivenQueryParams = null!,
                     Expected = "/test/part1/",
                     Scenario = "When path provided that has slash start and end"
                 }
@@ -91,11 +91,11 @@ namespace Bolt.Common.Extensions.UnitTests
 
         public record UrlBuilderTestDto
         {
-            public string GivenUrl { get; init; }
-            public List<string> GivenPaths { get; init; }
-            public Dictionary<string, string> GivenQueryParams { get; init; }
-            public string Expected { get; init; }
-            public string Scenario { get; init; }
+            public string GivenUrl { get; init; } = string.Empty;
+            public List<string> GivenPaths { get; init; } = [];
+            public Dictionary<string, string> GivenQueryParams { get; init; } = [];
+            public string Expected { get; init; } = string.Empty;
+            public string Scenario { get; init; } = string.Empty;
         }
     }
 }

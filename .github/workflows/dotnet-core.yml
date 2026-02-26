@@ -1,34 +1,121 @@
-name: .NET Core
+name: ci
 
 on:
   push:
-    branches: [master]
-    tags: release-**
+    branches: [ main ]
   pull_request:
-    branches: [master]
+    branches: [ main ]
+  release:
+    types: [ published ]
+  workflow_dispatch:
+
+env:
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_NOLOGO: true
 
 jobs:
-  build:
+  test:
+    name: Build and Test
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout
-        uses: actions/checkout@v2
-      - name: Setup .NET Core 7
-        uses: actions/setup-dotnet@v1
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
-          dotnet-version: "7.0.x"
-      - name: Setup .NET Core 8
-        uses: actions/setup-dotnet@v1
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: "8.0.x"
-      - name: Install dependencies
-        run: dotnet restore ./src/Bolt.Common.Extensions.sln
+          dotnet-version: '10.x'
+
+      - name: Restore
+        run: dotnet restore
+
       - name: Build
-        run: dotnet build ./src/Bolt.Common.Extensions.sln --configuration Release --no-restore
-      - name: Test
-        run: dotnet test ./src/Bolt.Common.Extensions.sln --no-restore --verbosity normal
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Test (with coverage)
+        run: dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage"
+
+      - name: Validate Coverage
+        shell: pwsh
+        run: |
+          $report = Get-ChildItem -Recurse -Filter coverage.cobertura.xml |
+                    Sort-Object LastWriteTime -Descending |
+                    Select-Object -First 1
+
+          if (-not $report) {
+            Write-Error "Coverage report not found."
+            exit 1
+          }
+
+          [xml]$xml = Get-Content $report.FullName
+          $lineRate = [double]$xml.coverage.'line-rate'
+
+          Write-Host "Line coverage: $lineRate"
+
+          if ($lineRate -lt 0.10) {
+            Write-Error "Coverage below 10%."
+            exit 1
+          }
+
+  pack:
+    name: Create NuGet Package
+    if: github.event_name == 'release'
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.x'
+
       - name: Pack
-        run: dotnet pack ./src/Bolt.Common.Extensions/Bolt.Common.Extensions.csproj -c Release --no-build --output ../nupkgs
+        run: |
+          dotnet pack \
+            --configuration Release \
+            --no-build \
+            -p:PackageVersion=${{ github.event.release.tag_name }} \
+            --output ./nuget
+
+      - name: Upload Package
+        uses: actions/upload-artifact@v4
+        with:
+          name: nuget
+          path: ./nuget/*.nupkg
+          retention-days: 1
+
+  publish:
+    name: Publish to NuGet
+    if: github.event_name == 'release'
+    needs: pack
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Package
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget
+          path: ./nuget
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.x'
+
       - name: Publish
-        run: dotnet nuget push ../nupkgs/**.nupkg -s https://www.nuget.org/api/v2/package/ -k ${{ secrets.nugetkey }} --skip-duplicate
+        shell: pwsh
+        run: |
+          Get-ChildItem "./nuget/*.nupkg" | ForEach-Object {
+            dotnet nuget push $_.FullName `
+              --api-key "${{ secrets.NUGET_API_KEY }}" `
+              --source "https://api.nuget.org/v3/index.json" `
+              --skip-duplicate
+          }

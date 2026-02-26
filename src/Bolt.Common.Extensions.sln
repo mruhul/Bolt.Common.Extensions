@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFolder", "SolutionFolder", "{E65B677A-4749-4840-BA42-F703BC6CB4DA}"
 	ProjectSection(SolutionItems) = preProject
 		..\README.md = ..\README.md
+		..\.github\workflows\dotnet-core.yml = ..\.github\workflows\dotnet-core.yml
 	EndProjectSection
 EndProject
 Global

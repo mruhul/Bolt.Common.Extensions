@@ -33,10 +33,10 @@ jobs:
         run: dotnet restore
 
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build src/Bolt.Common.Extensions.sln --configuration Release --no-restore
 
       - name: Test (with coverage)
-        run: dotnet test --configuration Release --no-build --collect:"XPlat Code Coverage"
+        run: dotnet test src/Bolt.Common.Extensions.sln --configuration Release --no-build --collect:"XPlat Code Coverage"
 
       - name: Validate Coverage
         shell: pwsh
@@ -79,7 +79,7 @@ jobs:
 
       - name: Pack
         run: |
-          dotnet pack \
+          dotnet pack src/Bolt.Common.Extensions.sln \
             --configuration Release \
             --no-build \
             -p:PackageVersion=${{ github.event.release.tag_name }} \
